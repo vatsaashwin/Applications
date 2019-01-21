@@ -34,7 +34,7 @@ void init_student(struct student* student, char* name, int id, float gpa) {
 //  Make sure that if any of the fields of student already have memory
 //  on the heap allocated to them, you free that memory before
 //  overwriting it with new values.
-    free_student(student);
+    //free_student(student);
     
 //  Note that this function must
 //  allocate space for the name field and copy the value from name into the
@@ -62,8 +62,6 @@ void init_student(struct student* student, char* name, int id, float gpa) {
 void free_student(struct student* student) {
     
     free(student->name);
-    //free(student->id);
-    //free(student->gpa);
     
 }
 
@@ -86,10 +84,13 @@ void free_student(struct student* student) {
  *   using a combination of free_student() and free().
  */
 struct student* deep_copy_student(struct student* student) {
-    
   
-    
-  return NULL;
+    struct student *dcopy = malloc(sizeof(struct student));
+    dcopy->name = student->name;
+    dcopy->id = student->id;
+    dcopy->gpa = student->gpa;
+//AskTA should the pointer value for both be different?
+  return dcopy;
 }
 
 
@@ -122,7 +123,20 @@ struct student* deep_copy_student(struct student* student) {
 struct student* create_student_array(int num_students, char** names, int* ids,
     float* gpas) {
 
-  return NULL;
+    struct student *sarr = malloc(sizeof(struct student));
+    int i=0;
+    for (i = 0; i<num_students; i++)
+    {
+        init_student(sarr, names[i] , ids[i], gpas[i]);
+        (sarr+i)->name = sarr->name;
+        (sarr+i)->id = sarr->id;
+        (sarr+i)->gpa = sarr->gpa;
+//AskTA final output from main doen't print out the first value correctly
+//        printf("Name: %s\t", (sarr+i)->name);
+//        printf("ID: %d\t", (sarr+i)->id);
+//        printf("GPA: %f\t\n", (sarr+i)->gpa);
+    }
+    return sarr;
 }
 
 
@@ -152,7 +166,7 @@ void destroy_student_array(struct student* students, int num_students) {
  */
 void print_students(struct student* students, int num_students) {
     
-    int i;
+    int i=0;
     for (i = 0; i<num_students; i++)
     {
         printf("Name: %s\t", (students+i)->name);

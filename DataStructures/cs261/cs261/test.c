@@ -62,8 +62,8 @@ float TESTING_GPAS[] = {
 //65, 66
 int main(int argc, char** argv) {
   struct student student;
-//  struct student* copy = NULL, * max_gpa, * min_gpa, * students = NULL;
-//  int i;
+  struct student* copy = NULL, * max_gpa, * min_gpa, * students = NULL;
+  int i;
 
   /*
    * Initialize a student using init_student() and print the results.  The
@@ -78,24 +78,25 @@ int main(int argc, char** argv) {
    * Make a copy of student using deep_copy_student() and compare the results.
    */
 //80-86
-//  copy = deep_copy_student(&student);
-//  printf("\n== Here's that student (left) and its deep copy (right):\n");
-//  if (copy) {
-//    printf("name (value):   %s\t%s\n", student.name, copy->name);
-//    printf("name (pointer): %p\t%p\n", student.name, copy->name);
-//    printf("id:             %d\t%d\n", student.id, copy->id);
-//    printf("gpa:            %f\t%f\n", student.gpa, copy->gpa);
-//  }
+  copy = deep_copy_student(&student);
+  printf("\n== Here's that student (left) and its deep copy (right):\n");
+  if (copy) {
+    printf("name (value):   %s\t%s\n", student.name, copy->name);
+    printf("name (pointer): %p\t%p\n", student.name, copy->name);
+    printf("id:             %d\t%d\n", student.id, copy->id);
+    printf("gpa:            %f\t%f\n", student.gpa, copy->gpa);
+    //printf("memory:             %d\t%d\n", &student, &copy);
+  }
 
   /*
    * Create an array of students using create_student_array() and print the
    * results.
    */
 //94-97
-//  students = create_student_array(NUM_TESTING_STUDENTS, TESTING_NAMES,
-//    TESTING_IDS, TESTING_GPAS);
-//  printf("\n== Here are the results of create_student_array():\n");
-//  print_students(students, NUM_TESTING_STUDENTS);
+  students = create_student_array(NUM_TESTING_STUDENTS, TESTING_NAMES,
+    TESTING_IDS, TESTING_GPAS);
+    printf("\n== Here are the results of create_student_array():\n");
+    print_students(students, NUM_TESTING_STUDENTS);
 
   /*
    * Use find_max_gpa() to find the student with the highest GPA and print
@@ -129,10 +130,10 @@ int main(int argc, char** argv) {
    * verify that you don't have memory leaks.
    */
     //131-134
-    //  free_student(&student);
-    //  free_student(copy);
-    //  free(copy);
-    //destroy_student_array(students, NUM_TESTING_STUDENTS);
+      //free_student(&student);
+      //("id:             %d\t%d\n", student.id, copy->id);free_student(copy);
+      free(copy);
+    //  destroy_student_array(students, NUM_TESTING_STUDENTS);
 
   return 0;
 }

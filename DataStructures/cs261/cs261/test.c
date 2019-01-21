@@ -121,7 +121,7 @@ int main(int argc, char** argv) {
    * results.
    */
 // 122-124
-  sort_by_gpa(students, NUM_TESTING_STUDENTS);
+//  sort_by_gpa(students, NUM_TESTING_STUDENTS);
 //  printf("\n== Here are the students ordered by decreasing GPA:\n");
 //  print_students(students, NUM_TESTING_STUDENTS);
 

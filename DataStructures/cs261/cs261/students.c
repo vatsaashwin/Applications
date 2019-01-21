@@ -255,7 +255,7 @@ void sort_by_gpa(struct student* students, int num_students) {
     
 //    int i, pos=0;
 //    float cnt;
-//    
+//
 //    for (i=0; i<num_students; i++)
 //    {
 //       if ((students+i)->gpa < (students+(i+1))->gpa)
@@ -264,9 +264,9 @@ void sort_by_gpa(struct student* students, int num_students) {
 //           (students+i)->gpa = (students+(i+1))->gpa;
 //           (students+(i+1))->gpa = (students+i)->gpa;
 //       }
-//        
+//
 //        printf("\n gpa is %f ", (students+i)->gpa);
 //    }
-//    
+//
 
 }

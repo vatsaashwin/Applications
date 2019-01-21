@@ -192,8 +192,19 @@ void print_students(struct student* students, int num_students) {
  *   The pointer returned should be an address within the array itself.  You
  *   should not make a copy of the student being returned.
  */
-struct student* find_max_gpa(struct student* students, int num_students) {
-  return NULL;
+struct student* find_max_gpa(struct student* students, int num_students)
+{
+    int i, pos=0;
+    float gpa= (students+0)->gpa;
+    for(i=0; i<num_students; i++)
+    {
+        if ((students+i)->gpa >= gpa)
+        {
+            gpa = (students+i)->gpa;
+            pos = i;
+        }
+    }
+    return (students+pos);
 }
 
 
@@ -213,7 +224,17 @@ struct student* find_max_gpa(struct student* students, int num_students) {
  *   should not make a copy of the student being returned.
  */
 struct student* find_min_gpa(struct student* students, int num_students) {
-  return NULL;
+    int i, pos=0;
+    float gpa= (students+0)->gpa;
+    for(i=0; i<num_students; i++)
+    {
+        if ((students+i)->gpa < gpa)
+        {
+            gpa = (students+i)->gpa;
+            pos = i;
+        }
+    }
+    return (students+pos);
 }
 
 
@@ -231,5 +252,21 @@ struct student* find_min_gpa(struct student* students, int num_students) {
  *   num_students - the number of students in the array
  */
 void sort_by_gpa(struct student* students, int num_students) {
+    
+//    int i, pos=0;
+//    float cnt;
+//    
+//    for (i=0; i<num_students; i++)
+//    {
+//       if ((students+i)->gpa < (students+(i+1))->gpa)
+//       {
+//           cnt = (students+i)->gpa;
+//           (students+i)->gpa = (students+(i+1))->gpa;
+//           (students+(i+1))->gpa = (students+i)->gpa;
+//       }
+//        
+//        printf("\n gpa is %f ", (students+i)->gpa);
+//    }
+//    
 
 }

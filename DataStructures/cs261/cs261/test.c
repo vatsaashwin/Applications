@@ -103,25 +103,25 @@ int main(int argc, char** argv) {
    * the result.
    */
 //104-106
-//  max_gpa = find_max_gpa(students, NUM_TESTING_STUDENTS);
-//  printf("\n== Here's the student with the highest GPA:\n");
-//  print_students(max_gpa, 1);
+  max_gpa = find_max_gpa(students, NUM_TESTING_STUDENTS);
+  printf("\n== Here's the student with the highest GPA:\n");
+  print_students(max_gpa, 1);
 
   /*
    * Use find_min_gpa() to find the student with the lowest GPA and print
    * the result.
    */
 //113-115
-//  min_gpa = find_min_gpa(students, NUM_TESTING_STUDENTS);
-//  printf("\n== Here's the student with the lowest GPA:\n");
-//  print_students(min_gpa, 1);
+  min_gpa = find_min_gpa(students, NUM_TESTING_STUDENTS);
+  printf("\n== Here's the student with the lowest GPA:\n");
+  print_students(min_gpa, 1);
 
   /*
    * Use sort_by_gpa() to order the students by decreasing GPA and print the
    * results.
    */
 // 122-124
-//  sort_by_gpa(students, NUM_TESTING_STUDENTS);
+  sort_by_gpa(students, NUM_TESTING_STUDENTS);
 //  printf("\n== Here are the students ordered by decreasing GPA:\n");
 //  print_students(students, NUM_TESTING_STUDENTS);
 
@@ -131,7 +131,8 @@ int main(int argc, char** argv) {
    */
     //131-134
       //free_student(&student);
-      //("id:             %d\t%d\n", student.id, copy->id);free_student(copy);
+      //("id:             %d\t%d\n", student.id, copy->id);
+      //free_student(copy);
       free(copy);
     //  destroy_student_array(students, NUM_TESTING_STUDENTS);
 

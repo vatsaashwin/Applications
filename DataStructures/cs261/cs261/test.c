@@ -59,8 +59,7 @@ float TESTING_GPAS[] = {
   3.9
 };
 
-//65, 66
-int main(int argc, char** argv) {
+  int main(int argc, char** argv) {
   struct student student;
   struct student* copy = NULL, * max_gpa, * min_gpa, * students = NULL;
   int i;
@@ -69,7 +68,6 @@ int main(int argc, char** argv) {
    * Initialize a student using init_student() and print the results.  The
    * power of pointers lets us use print_students() this way!
    */
-  //printf("%s %d %f", TESTING_NAMES[0], TESTING_IDS[0], TESTING_GPAS[0] );
   init_student(&student, TESTING_NAMES[0], TESTING_IDS[0], TESTING_GPAS[0]);
   printf("\n== Here are the results of init_student():\n");
   print_students(&student, 1);
@@ -77,7 +75,6 @@ int main(int argc, char** argv) {
   /*
    * Make a copy of student using deep_copy_student() and compare the results.
    */
-//80-86
   copy = deep_copy_student(&student);
   printf("\n== Here's that student (left) and its deep copy (right):\n");
   if (copy) {
@@ -92,7 +89,6 @@ int main(int argc, char** argv) {
    * Create an array of students using create_student_array() and print the
    * results.
    */
-//94-97
   students = create_student_array(NUM_TESTING_STUDENTS, TESTING_NAMES,
     TESTING_IDS, TESTING_GPAS);
     printf("\n== Here are the results of create_student_array():\n");
@@ -102,7 +98,6 @@ int main(int argc, char** argv) {
    * Use find_max_gpa() to find the student with the highest GPA and print
    * the result.
    */
-//104-106
   max_gpa = find_max_gpa(students, NUM_TESTING_STUDENTS);
   printf("\n== Here's the student with the highest GPA:\n");
   print_students(max_gpa, 1);
@@ -111,7 +106,6 @@ int main(int argc, char** argv) {
    * Use find_min_gpa() to find the student with the lowest GPA and print
    * the result.
    */
-//113-115
   min_gpa = find_min_gpa(students, NUM_TESTING_STUDENTS);
   printf("\n== Here's the student with the lowest GPA:\n");
   print_students(min_gpa, 1);
@@ -120,20 +114,19 @@ int main(int argc, char** argv) {
    * Use sort_by_gpa() to order the students by decreasing GPA and print the
    * results.
    */
-// 122-124
-//  sort_by_gpa(students, NUM_TESTING_STUDENTS);
-//  printf("\n== Here are the students ordered by decreasing GPA:\n");
-//  print_students(students, NUM_TESTING_STUDENTS);
+  sort_by_gpa(students, NUM_TESTING_STUDENTS);
+  printf("\n== Here are the students ordered by decreasing GPA:\n");
+  print_students(students, NUM_TESTING_STUDENTS);
 
   /*
    * Free all of the memory we allocated here.  You should use valgrind to
    * verify that you don't have memory leaks.
    */
-    //131-134
-      //free_student(&student);
-      //("id:             %d\t%d\n", student.id, copy->id);
-      //free_student(copy);
-      free(copy);
+   //131-134
+  //free_student(&student);
+  //("id:             %d\t%d\n", student.id, copy->id);
+  //free_student(copy);
+  free(copy);
     //  destroy_student_array(students, NUM_TESTING_STUDENTS);
 
   return 0;

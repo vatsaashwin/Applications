@@ -131,6 +131,7 @@ struct student* create_student_array(int num_students, char** names, int* ids,
         (sarr+i)->name = sarr->name;
         (sarr+i)->id = sarr->id;
         (sarr+i)->gpa = sarr->gpa;
+        
 //AskTA final output from main doen't print out the first value correctly
 //        printf("Name: %s\t", (sarr+i)->name);
 //        printf("ID: %d\t", (sarr+i)->id);
@@ -169,9 +170,7 @@ void print_students(struct student* students, int num_students) {
     int i=0;
     for (i = 0; i<num_students; i++)
     {
-        printf("Name: %s\t", (students+i)->name);
-        printf("ID: %d\t", (students+i)->id);
-        printf("GPA: %f\t\n", (students+i)->gpa);
+        printf("Name: %s\t| ID: %d\t| GPA: %f\t\n", (students+i)->name, (students+i)->id, (students+i)->gpa);
     }
 
 }
@@ -251,22 +250,24 @@ struct student* find_min_gpa(struct student* students, int num_students) {
  *     this array will be sorted by descending GPA
  *   num_students - the number of students in the array
  */
+// AskTA because the first one is not coming correctly
 void sort_by_gpa(struct student* students, int num_students) {
     
-//    int i, pos=0;
-//    float cnt;
-//
-//    for (i=0; i<num_students; i++)
-//    {
-//       if ((students+i)->gpa < (students+(i+1))->gpa)
-//       {
-//           cnt = (students+i)->gpa;
-//           (students+i)->gpa = (students+(i+1))->gpa;
-//           (students+(i+1))->gpa = (students+i)->gpa;
-//       }
-//
-//        printf("\n gpa is %f ", (students+i)->gpa);
-//    }
-//
+    int i,j;
+    float cnt;
+    
+    for (i=0; i<num_students; i++)
+    {
+        for (j = i + 1; j < num_students; ++j)
+        {
+            
+            if ((students+i)->gpa < (students+j)->gpa)
+            {
+                cnt =  (students+i)->gpa;
+                (students+i)->gpa = (students+j)->gpa;
+                (students+j)->gpa = cnt;
+            }
+        }
+    }
 
 }

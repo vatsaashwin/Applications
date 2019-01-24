@@ -59,12 +59,13 @@ void init_student(struct student* student, char* name, int id, float gpa) {
  *     struct itself should not be freed.
  */
 
-void free_student(struct student* student) {
-    
+void free_student(struct student* student)
+{
+    assert(student->name);
+    assert(student);
     free(student->name);
-    
+    //free(student);
 }
-
 
 /*
  * This function should make a deep copy of a single student.  A deep copy is
@@ -86,11 +87,12 @@ void free_student(struct student* student) {
 struct student* deep_copy_student(struct student* student) {
   
     struct student *dcopy = malloc(sizeof(struct student));
+    assert(dcopy != 0);
     dcopy->name = student->name;
     dcopy->id = student->id;
     dcopy->gpa = student->gpa;
-//AskTA should the pointer value for both be different?
-  return dcopy;
+    //AskTA should the pointer value for both be different?
+    return dcopy;
 }
 
 
@@ -124,18 +126,11 @@ struct student* create_student_array(int num_students, char** names, int* ids,
     float* gpas) {
 
     struct student *sarr = malloc(sizeof(struct student));
+    assert(sarr != 0);
     int i=0;
     for (i = 0; i<num_students; i++)
     {
-        init_student(sarr, names[i] , ids[i], gpas[i]);
-        (sarr+i)->name = sarr->name;
-        (sarr+i)->id = sarr->id;
-        (sarr+i)->gpa = sarr->gpa;
-        
-//AskTA final output from main doen't print out the first value correctly
-//        printf("Name: %s\t", (sarr+i)->name);
-//        printf("ID: %d\t", (sarr+i)->id);
-//        printf("GPA: %f\t\n", (sarr+i)->gpa);
+        init_student(sarr+i, names[i] , ids[i], gpas[i]);
     }
     return sarr;
 }
@@ -153,7 +148,11 @@ struct student* create_student_array(int num_students, char** names, int* ids,
  *   num_students - the number of students in the array
  */
 void destroy_student_array(struct student* students, int num_students) {
-
+    int i;
+    for(i=0; i<num_students; i++)
+    {
+        free_student(students+i);
+    }
 }
 
 
@@ -250,7 +249,6 @@ struct student* find_min_gpa(struct student* students, int num_students) {
  *     this array will be sorted by descending GPA
  *   num_students - the number of students in the array
  */
-// AskTA because the first one is not coming correctly
 void sort_by_gpa(struct student* students, int num_students) {
     
     int i,j;

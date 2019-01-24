@@ -82,7 +82,6 @@ float TESTING_GPAS[] = {
     printf("name (pointer): %p\t%p\n", student.name, copy->name);
     printf("id:             %d\t%d\n", student.id, copy->id);
     printf("gpa:            %f\t%f\n", student.gpa, copy->gpa);
-    //printf("memory:             %d\t%d\n", &student, &copy);
   }
 
   /*
@@ -124,10 +123,9 @@ float TESTING_GPAS[] = {
    */
    //131-134
   //free_student(&student);
-  //("id:             %d\t%d\n", student.id, copy->id);
   //free_student(copy);
   free(copy);
-    //  destroy_student_array(students, NUM_TESTING_STUDENTS);
+  //destroy_student_array(students, NUM_TESTING_STUDENTS);
 
   return 0;
 }

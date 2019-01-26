@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 #include "students.h"
 
@@ -39,14 +40,14 @@ void init_student(struct student* student, char* name, int id, float gpa) {
 //  Note that this function must
 //  allocate space for the name field and copy the value from name into the
 //  newly-allocated name field.
-    char *nptr = malloc(sizeof(name));
-    
-    nptr = name;
+//    char *nptr = malloc(sizeof(name));
+//    nptr = name;
     assert(student != 0);
-    (*student).name = nptr;
-    (*student).id = id;
-    (*student).gpa = gpa;
-
+    int array_size = sizeof(name);
+    student-> name = (char *) malloc(array_size * sizeof(char));
+    strcpy(student->name, name);
+    student -> id = id;
+    student->gpa = gpa;
 }
 
 /*
@@ -64,7 +65,6 @@ void free_student(struct student* student)
     assert(student->name);
     assert(student);
     free(student->name);
-    //free(student);
 }
 
 /*
@@ -84,17 +84,15 @@ void free_student(struct student* student)
  *   should be allocated by this function.  This memory will have to be freed
  *   using a combination of free_student() and free().
  */
-struct student* deep_copy_student(struct student* student) {
-  
+struct student* deep_copy_student(struct student* student)
+{
     struct student *dcopy = malloc(sizeof(struct student));
     assert(dcopy != 0);
     dcopy->name = student->name;
     dcopy->id = student->id;
     dcopy->gpa = student->gpa;
-    //AskTA should the pointer value for both be different?
     return dcopy;
 }
-
 
 /*
  * This function should allocate space for an array of student structs and
@@ -123,9 +121,9 @@ struct student* deep_copy_student(struct student* student) {
  *   name, the i'th ID, and the i'th GPA from the arrays provided as arguments.
  */
 struct student* create_student_array(int num_students, char** names, int* ids,
-    float* gpas) {
-
-    struct student *sarr = malloc(sizeof(struct student));
+    float* gpas)
+{
+    struct student *sarr = malloc(num_students*sizeof(struct student));
     assert(sarr != 0);
     int i=0;
     for (i = 0; i<num_students; i++)
@@ -134,7 +132,6 @@ struct student* create_student_array(int num_students, char** names, int* ids,
     }
     return sarr;
 }
-
 
 /*
  * This function should free all of the memory allocated to an array of
@@ -154,7 +151,6 @@ void destroy_student_array(struct student* students, int num_students) {
         free_student(students+i);
     }
 }
-
 
 /*
  * This function should print the name, ID, and GPA of each student in an
@@ -252,18 +248,18 @@ struct student* find_min_gpa(struct student* students, int num_students) {
 void sort_by_gpa(struct student* students, int num_students) {
     
     int i,j;
-    float cnt;
+    struct student std;
     
     for (i=0; i<num_students; i++)
     {
-        for (j = i + 1; j < num_students; ++j)
+        for (j = 0; j < (num_students-i); ++j)
         {
             
-            if ((students+i)->gpa < (students+j)->gpa)
+            if (students[j].gpa < (students[j+1].gpa))
             {
-                cnt =  (students+i)->gpa;
-                (students+i)->gpa = (students+j)->gpa;
-                (students+j)->gpa = cnt;
+                std =  students[j];
+                students[j] = students[j+1];
+                students[j+1] = std;
             }
         }
     }

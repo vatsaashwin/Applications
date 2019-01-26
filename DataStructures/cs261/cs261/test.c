@@ -122,10 +122,12 @@ float TESTING_GPAS[] = {
    * verify that you don't have memory leaks.
    */
    //131-134
-  //free_student(&student);
+      
+  //printf("%s\n", student.name);
+  //printf("%s\n", "---");
+  free_student(&student);
   //free_student(copy);
   free(copy);
-  //destroy_student_array(students, NUM_TESTING_STUDENTS);
-
+  destroy_student_array(students, NUM_TESTING_STUDENTS);
   return 0;
 }

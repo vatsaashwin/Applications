@@ -35,7 +35,6 @@ void init_student(struct student* student, char* name, int id, float gpa) {
 //  Make sure that if any of the fields of student already have memory
 //  on the heap allocated to them, you free that memory before
 //  overwriting it with new values.
-    //free_student(student);
     
 //  Note that this function must
 //  allocate space for the name field and copy the value from name into the
@@ -86,12 +85,18 @@ void free_student(struct student* student)
  */
 struct student* deep_copy_student(struct student* student)
 {
-    struct student *dcopy = malloc(sizeof(struct student));
-    assert(dcopy != 0);
-    dcopy->name = student->name;
-    dcopy->id = student->id;
-    dcopy->gpa = student->gpa;
-    return dcopy;
+//    printf("------deep copy------\n %s\n %d\n %f \n ---------\n", (student)->name,
+//           (student)->id, (student)->gpa);
+//    struct student *dcopy = student;
+//    //int array_size = sizeof(student->name);
+//    //dcopy-> name = (char *) malloc(array_size * sizeof(char));
+//    strcpy(dcopy->name, student->name);
+//    dcopy->id= student->id;
+//    dcopy->gpa=student->gpa;
+//    printf("------deep copy------\n %s\n %d\n  %f\n ---------\n", dcopy->name,
+//           (dcopy)->id, (dcopy)->gpa);
+    
+    return NULL;
 }
 
 /*
@@ -165,7 +170,8 @@ void print_students(struct student* students, int num_students) {
     int i=0;
     for (i = 0; i<num_students; i++)
     {
-        printf("Name: %s\t| ID: %d\t| GPA: %f\t\n", (students+i)->name, (students+i)->id, (students+i)->gpa);
+        printf("Name: %s\t| ID: %d\t| GPA: %f\t\n", (students+i)->name, (students+i)->id,
+               (students+i)->gpa);
     }
 
 }
@@ -265,3 +271,5 @@ void sort_by_gpa(struct student* students, int num_students) {
     }
 
 }
+
+

@@ -47,6 +47,7 @@ void init_student(struct student* student, char* name, int id, float gpa) {
     strcpy(student->name, name);
     student -> id = id;
     student->gpa = gpa;
+    
 }
 
 /*
@@ -85,18 +86,17 @@ void free_student(struct student* student)
  */
 struct student* deep_copy_student(struct student* student)
 {
-//    printf("------deep copy------\n %s\n %d\n %f \n ---------\n", (student)->name,
-//           (student)->id, (student)->gpa);
-//    struct student *dcopy = student;
-//    //int array_size = sizeof(student->name);
-//    //dcopy-> name = (char *) malloc(array_size * sizeof(char));
-//    strcpy(dcopy->name, student->name);
-//    dcopy->id= student->id;
-//    dcopy->gpa=student->gpa;
-//    printf("------deep copy------\n %s\n %d\n  %f\n ---------\n", dcopy->name,
-//           (dcopy)->id, (dcopy)->gpa);
+    assert(student!=0);
+    int array_size = sizeof(student->name);
+    struct student *deep_copy = malloc( sizeof(struct student));
+    deep_copy-> name = (char *) malloc( array_size * sizeof(char));
+    assert(deep_copy);
+    assert(deep_copy->name);
+    strcpy(deep_copy->name,student->name);
+    deep_copy->id =student->id;
+    deep_copy->gpa =student ->gpa;
     
-    return NULL;
+    return deep_copy;
 }
 
 /*

@@ -7,6 +7,7 @@ import numpy as np
 
 CSVHEADER_city = ["country", "city", "state", "latitude", "city_id", "longitude"]
 CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","city", "state","rent_index","property_price_to_income_ratio"]
+CSVHEADER_prices =  []
 allcitylist=[]
 
 def getcityinfo():

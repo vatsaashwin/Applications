@@ -3,8 +3,10 @@ import json
 import time
 import numpy as np
 
+# https://www.numbeo.com/api/indices?api_key=ha1vwlcog85my4&query=Midlothian
+
 CSVHEADER_city = ["country", "city", "state", "latitude", "city_id", "longitude"]
-CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","cityname","rent_index","property_price_to_income_ratio"]
+CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","city", "state","rent_index","property_price_to_income_ratio"]
 allcitylist=[]
 
 def getcityinfo():
@@ -14,7 +16,7 @@ def getcityinfo():
 	  }
 	r = requests.get('https://www.numbeo.com/api/cities?api_key=ha1vwlcog85my4&country=United+States', params=params)
 	data = json.loads(r.text)
-	print(data)
+	# print(data)
 	return data
 
 def getinfo():
@@ -60,48 +62,63 @@ def splitcityname(str):
 	allcitylist.append(a)
 	return a, b
 
-def savecities(data):
-	with open('citylist.csv', 'w+') as citylist:
-		writer = csv.DictWriter(citylist, fieldnames = CSVHEADER_city)
+def saveindices(data):
+	with open('indexlist.csv', 'w+') as indexlist:
+		writer = csv.DictWriter(indexlist, fieldnames = CSVHEADER_indexes)
 		writer.writeheader()
-		
-		for ct in data['cities']:
-		 	country = ct["country"]
-		 	location = ct["city"]
+		# CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","cityname","rent_index","property_price_to_income_ratio"]
 
+		for ind in data[0:1]:
+			 # if value not present enter null
+		 	if not 'health_care_index' in ind :
+		 		health_care_index = ''
+		 	else:
+		 		health_care_index = ind["health_care_index"]
+			
+		 	if not 'crime_index' in ind:
+		 		crime_index = ''
+		 	else:
+		 		crime_index = ind["crime_index"]
+			# print(ind["name"])
+		 	# country = ct["country"]
+		 	print(ind["name"])
+
+		 	location = ind["name"]
 		 	#split city and state(and in some cases country name)
 		 	city, state = splitcityname(location)
+		 	# print(city, state)
 
-		 	# if value not present enter null
-		 	if not 'latitude' in ct :
-		 		latitude = ''
-		 	else:
-		 		latitude = ct["latitude"]
+		 	# # if value not present enter null
+		 	# if not 'latitude' in ct :
+		 	# 	latitude = ''
+		 	# else:
+		 	# 	latitude = ct["latitude"]
 
-		 	#if value not present enter null
-		 	if not 'city_id' in ct :
-		 		city_id = ''
-		 	else:
-		 		city_id = ct["city_id"]
+		 	# #if value not present enter null
+		 	# if not 'city_id' in ct :
+		 	# 	city_id = ''
+		 	# else:
+		 	# 	city_id = ct["city_id"]
 
-		 	#  if value not present enter null
-		 	if not 'longitude' in ct :
-		 		longitude = ''
-		 	else:
-		 		longitude = ct["longitude"]
+		 	# #  if value not present enter null
+		 	# if not 'longitude' in ct :
+		 	# 	longitude = ''
+		 	# else:
+		 	# 	longitude = ct["longitude"]
 
 		 	row = {}
-		 	row["country"] = country
+		 	row["health_care_index"] = health_care_index
+		 	row["crime_index"] = crime_index
 		 	row["city"] = city
 		 	row["state"] = state
-		 	row["latitude"] = latitude
-		 	row["city_id"] = city_id
-		 	row["longitude"] = longitude
+		 	# row["latitude"] = latitude
+		 	# row["city_id"] = city_id
+		 	# row["longitude"] = longitude
 
 		 	writer.writerow(row)
 
 
-def saveindices(data):
+def savecities(data):
 	with open('citylist.csv', 'r+') as citylist:
 		writer = csv.DictWriter(citylist, fieldnames = CSVHEADER_city)
 		writer.writeheader()
@@ -150,6 +167,6 @@ if __name__ == "__main__":
 	# print(allcitylist[0:10])
 	indices, prices = getinfo()
 	# print(indices, prices)
-	# saveindices(indices)
+	saveindices(indices)
 	print("--- %s seconds ---" % (time.time() - start_time))
 

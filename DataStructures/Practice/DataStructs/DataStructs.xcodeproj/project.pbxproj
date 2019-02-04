@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B89033D2206557F0090FDAF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B89033C2206557F0090FDAF /* main.c */; };
-		7B890347220656480090FDAF /* dynArr.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B890346220656480090FDAF /* dynArr.c */; };
+		7BEA05962206B196002FED6B /* llist.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA05952206B196002FED6B /* llist.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +24,7 @@
 
 /* Begin PBXFileReference section */
 		7B8903392206557F0090FDAF /* DataStructs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataStructs; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B89033C2206557F0090FDAF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		7B890345220656480090FDAF /* dynArr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dynArr.h; sourceTree = "<group>"; };
-		7B890346220656480090FDAF /* dynArr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dynArr.c; sourceTree = "<group>"; };
+		7BEA05952206B196002FED6B /* llist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = llist.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +57,7 @@
 		7B89033B2206557F0090FDAF /* DataStructs */ = {
 			isa = PBXGroup;
 			children = (
-				7B89033C2206557F0090FDAF /* main.c */,
-				7B890345220656480090FDAF /* dynArr.h */,
-				7B890346220656480090FDAF /* dynArr.c */,
+				7BEA05952206B196002FED6B /* llist.c */,
 			);
 			path = DataStructs;
 			sourceTree = "<group>";
@@ -123,8 +118,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B89033D2206557F0090FDAF /* main.c in Sources */,
-				7B890347220656480090FDAF /* dynArr.c in Sources */,
+				7BEA05962206B196002FED6B /* llist.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

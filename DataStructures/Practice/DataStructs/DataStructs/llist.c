@@ -25,6 +25,8 @@ void printList(struct Node *n)
 }
 
 
+
+
 //creates a simple llist with 3 nodes
 int main()
 {

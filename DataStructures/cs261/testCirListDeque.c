@@ -6,28 +6,26 @@ int main(int argc, char* argv[]) {
  
     /* Test your linked list in here! */
 	/* Try to write the tests yourself */
-    printf("createCirListDeque()...\n");
     struct cirListDeque* q = createCirListDeque();
-    addBackCirListDeque(q, (TYPE)4);
-    addBackCirListDeque(q, (TYPE)5);
-    addBackCirListDeque(q, (TYPE)6);
     addFrontCirListDeque(q, (TYPE)3);
     addFrontCirListDeque(q, (TYPE)2);
     addFrontCirListDeque(q, (TYPE)1);
-    printf("printCirListDeque(q)...\n");
+    addBackCirListDeque(q, (TYPE)4);
+    addBackCirListDeque(q, (TYPE)5);
+    addBackCirListDeque(q, (TYPE)6);
+    printf("\nPrint list created: ");
     printCirListDeque(q);
-    printf("frontCirListDeque(q)...\n");
-    printf("%g\n", frontCirListDeque(q));
-    printf("backCirListDeque(q)...\n");
-    printf("%g\n", backCirListDeque(q));
-    printf("removeFrontCirListDeque(q)...\n");
+    printf("\nFront of deque: ");
+    printf("%g ", frontCirListDeque(q));
+    printf("\nBack of deque: ");
+    printf("%g", backCirListDeque(q));
+    printf("\nRemove from front... ");
     removeFrontCirListDeque(q);
-    printf("removeBackCirListDeque(q)...\n");
+    printf("\nRemove from back...");
     removeBackCirListDeque(q);
-    printf("printCirListDeque(q)...\n");
+    printf("\nPrint final list: ");
     printCirListDeque(q);
-    printf("printCirListDeque(q)...\n");
-    printCirListDeque(q);
+    printf("\n");
 	return 0;
 }
 

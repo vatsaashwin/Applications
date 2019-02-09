@@ -198,7 +198,7 @@ void _removeLink(struct cirListDeque *q, struct DLink *lnk)
     //Reduce q->size
     q->size--;
     
-    //free lnk from memory?? ERROR
+    //free lnk from memory?? 
     free(lnk);
     
 }
@@ -282,7 +282,7 @@ void printCirListDeque(struct cirListDeque *q)
     assert(q->size != 0);
     struct DLink* newLink = q->Sentinel->next;
     while(newLink != q->Sentinel){
-        printf("%g\n", newLink->value);
+        printf(" %g ", newLink->value);
         newLink = newLink->next;
     }
 

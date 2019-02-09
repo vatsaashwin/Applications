@@ -1,0 +1,33 @@
+
+PART I: Amortized Analysis of the Dynamic Array
+
+Solution:
+
+
+1. Calculate cost units that are spent in the entire process of performing 16 consecutive push operations on an empty array which starts out at 8 capacity, assuming that each capacity will double in capacity each time new item is added to an already full array.
+
+Cost: 8 + 9 + 7 = 24 cost units.
+
+
+Now, calculating it for 32 consecutive push operations.
+
+Cost: 8 + 9 + 7 + 17 + 15  = 56 cost units.
+
+As N(No.of pushes) grows large, under this strategy of resizing, what is the big-oh complexity for push?
+
+big-oh: O(1+)
+
+
+2. Calculate cost units spent in entire process of performing 16 consecutive push operations on an empty array which starts out with capacity 8, assuming the array will grow by a constant 2 spaces each time new item is added to an already full dynamic array.
+
+Cost: 8 + (9 + 1) + (11 + 1) + (13 + 1) + (15 + 1) = 60
+
+Now, calculating it for 32 consecutive push operations.
+
+Cost: 8 + 10 + 12 + 14 + .... + 32 = 260
+
+As N(No.of pushes) grows large, under this strategy of resizing, what is the big-oh complexity for push?
+
+big-oh: O(n)
+
+

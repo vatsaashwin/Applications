@@ -218,7 +218,6 @@ void removeFrontCirListDeque (struct cirListDeque *q) {
 
 
 /* Remove the back of the deque
-
 	param: 	q		pointer to the deque
 	pre:	q is not null and q is not empty
 	post:	the back is removed from the deque

@@ -6,7 +6,7 @@ import numpy as np
 # https://www.numbeo.com/api/indices?api_key=ha1vwlcog85my4&query=Midlothian
 
 CSVHEADER_city = ["country", "city", "state", "latitude", "city_id", "longitude"]
-CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","city", "state","rent_index","property_price_to_income_ratio"]
+CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","groceries_index","safety_index","city", "state","rent_index","property_price_to_income_ratio"]
 CSVHEADER_prices =  []
 allcitylist=[]
 
@@ -52,6 +52,8 @@ def getinfo():
 def splitcityname(str):
 	a=''
 	b=''
+	garbage=''
+	# print("printing str", str)
 	if "," not in str:
 		a=str
 		b= ''
@@ -61,6 +63,7 @@ def splitcityname(str):
 		a, b, garbage = str.split(",")
 
 	allcitylist.append(a)
+	# print("city=", a , "state=", b, "country=", garbage)
 	return a, b
 
 def saveindices(data):
@@ -69,7 +72,7 @@ def saveindices(data):
 		writer.writeheader()
 		# CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","cityname","rent_index","property_price_to_income_ratio"]
 
-		for ind in data[0:1]:
+		for ind in data[:]:
 			 # if value not present enter null
 		 	if not 'health_care_index' in ind :
 		 		health_care_index = ''
@@ -80,41 +83,61 @@ def saveindices(data):
 		 		crime_index = ''
 		 	else:
 		 		crime_index = ind["crime_index"]
-			# print(ind["name"])
-		 	# country = ct["country"]
-		 	print(ind["name"])
+
+		 	if not 'pollution_index' in ind:
+		 		pollution_index = ''
+		 	else:
+		 		pollution_index = ind["pollution_index"]
+
+		 	if not 'traffic_index' in ind:
+		 		traffic_index = ''
+		 	else:
+		 		traffic_index = ind["traffic_index"]
+
+		 	if not 'quality_of_life_index' in ind:
+		 		quality_of_life_index = ''
+		 	else:
+		 		quality_of_life_index = ind["quality_of_life_index"]
+
+		 	if not 'groceries_index' in ind:
+		 		groceries_index = ''
+		 	else:
+		 		groceries_index = ind["groceries_index"]
+
+		 	if not 'safety_index' in ind:
+		 		safety_index = ''
+		 	else:
+		 		safety_index = ind["safety_index"]
 
 		 	location = ind["name"]
+		 	
+		 	print("loooooookout for", location)
 		 	#split city and state(and in some cases country name)
 		 	city, state = splitcityname(location)
-		 	# print(city, state)
+		 	# print("---------------",city,"----------", state)
 
-		 	# # if value not present enter null
-		 	# if not 'latitude' in ct :
-		 	# 	latitude = ''
-		 	# else:
-		 	# 	latitude = ct["latitude"]
+		 	if not 'rent_index' in ind:
+		 		rent_index = ''
+		 	else:
+		 		rent_index = ind["rent_index"]
 
-		 	# #if value not present enter null
-		 	# if not 'city_id' in ct :
-		 	# 	city_id = ''
-		 	# else:
-		 	# 	city_id = ct["city_id"]
-
-		 	# #  if value not present enter null
-		 	# if not 'longitude' in ct :
-		 	# 	longitude = ''
-		 	# else:
-		 	# 	longitude = ct["longitude"]
+		 	if not 'property_price_to_income_ratio' in ind:
+		 		property_price_to_income_ratio = ''
+		 	else:
+		 		property_price_to_income_ratio = ind["property_price_to_income_ratio"]
 
 		 	row = {}
 		 	row["health_care_index"] = health_care_index
 		 	row["crime_index"] = crime_index
+		 	row["pollution_index"] = pollution_index
+		 	row["traffic_index"] = traffic_index
+		 	row["quality_of_life_index"] = quality_of_life_index
+		 	row["groceries_index"] = groceries_index
+		 	row["safety_index"] = safety_index
 		 	row["city"] = city
 		 	row["state"] = state
-		 	# row["latitude"] = latitude
-		 	# row["city_id"] = city_id
-		 	# row["longitude"] = longitude
+		 	row["rent_index"] = rent_index
+		 	row["property_price_to_income_ratio"] = property_price_to_income_ratio
 
 		 	writer.writerow(row)
 
@@ -129,6 +152,7 @@ def savecities(data):
 		 	location = ct["city"]
 
 		 	#split city and state(and in some cases country name)
+		 	print("loc is", location)
 		 	city, state = splitcityname(location)
 
 		 	# if value not present enter null
@@ -165,9 +189,9 @@ if __name__ == "__main__":
 	start_time = time.time()
 	cities = getcityinfo()
 	savecities(cities)
-	# print(allcitylist[0:10])
+	# print(allcitylist[:])
 	indices, prices = getinfo()
-	# print(indices, prices)
+	print(indices)
 	saveindices(indices)
 	print("--- %s seconds ---" % (time.time() - start_time))
 

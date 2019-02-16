@@ -7,7 +7,7 @@ import numpy as np
 
 CSVHEADER_city = ["country", "city", "state", "latitude", "city_id", "longitude"]
 CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","groceries_index","safety_index","city", "state","rent_index","property_price_to_income_ratio"]
-CSVHEADER_prices =  []
+CSVHEADER_prices =  ["city", "state", "average_price", "item_name", "highest_price", "item_id", "lowest_price", "data_points"]
 allcitylist=[]
 
 def getcityinfo():
@@ -25,16 +25,18 @@ def getinfo():
 	  "api_key": "ha1vwlcog85my4",
 	  "format": "csv"
 	  }
+	count =0
 	indexlist=[]
 	pricelist=[]
-	for city in allcitylist[0:10]:  
+	for city in allcitylist[:]: 
+		count=count+1 
 		if len(city)>0:
 			if not ' ' in city:
-				print(city)
+				print(city, count)
 				apiString_index = 'https://www.numbeo.com/api/indices?api_key=ha1vwlcog85my4&query='+city
 				apiString_price = 'https://www.numbeo.com/api/city_prices?api_key=ha1vwlcog85my4&query='+city
 			else:
-				print(city)
+				print(city, count)
 				strappend= city.replace(" ", "+")
 				apiString_index = 'https://www.numbeo.com/api/indices?api_key=ha1vwlcog85my4&query='+city
 				apiString_price = 'https://www.numbeo.com/api/city_prices?api_key=ha1vwlcog85my4&query='+city
@@ -54,17 +56,61 @@ def splitcityname(str):
 	b=''
 	garbage=''
 	# print("printing str", str)
-	if "," not in str:
+	
+	if ',' not in str:
 		a=str
 		b= ''
 	elif str.count(',')<2:
-	 	a, b = str.split(",")
+	 	a, b = str.split(',')
 	elif str.count(',')>2:
-		a, b, garbage = str.split(",")
-
+		a, b, garbage = str.split(',')
+	
 	allcitylist.append(a)
-	# print("city=", a , "state=", b, "country=", garbage)
+	
 	return a, b
+
+
+def savecities(data):
+	with open('citylist.csv', 'r+') as citylist:
+		writer = csv.DictWriter(citylist, fieldnames = CSVHEADER_city)
+		writer.writeheader()
+		
+		for ct in data['cities']:
+		 	country = ct["country"]
+		 	location = ct["city"]
+
+		 	#split city and state(and in some cases country name)
+		 	# print("loc is", location)
+		 	city, state = splitcityname(location)
+
+		 	# if value not present enter null
+		 	if not 'latitude' in ct :
+		 		latitude = ''
+		 	else:
+		 		latitude = ct["latitude"]
+
+		 	#if value not present enter null
+		 	if not 'city_id' in ct :
+		 		city_id = ''
+		 	else:
+		 		city_id = ct["city_id"]
+
+		 	#  if value not present enter null
+		 	if not 'longitude' in ct :
+		 		longitude = ''
+		 	else:
+		 		longitude = ct["longitude"]
+
+		 	row = {}
+		 	row["country"] = country
+		 	row["city"] = city
+		 	row["state"] = state
+		 	row["latitude"] = latitude
+		 	row["city_id"] = city_id
+		 	row["longitude"] = longitude
+
+		 	writer.writerow(row)
+
 
 def saveindices(data):
 	with open('indexlist.csv', 'w+') as indexlist:
@@ -108,13 +154,14 @@ def saveindices(data):
 		 		safety_index = ''
 		 	else:
 		 		safety_index = ind["safety_index"]
+		 	
+		 	garbage=''
 
 		 	location = ind["name"]
-		 	
-		 	print("loooooookout for", location)
-		 	#split city and state(and in some cases country name)
-		 	city, state = splitcityname(location)
-		 	# print("---------------",city,"----------", state)
+		 	if location.count(',')<2:
+		 		city, state =  location.split(',')
+		 	else:
+		 		city, state, garbage =  location.split(',')
 
 		 	if not 'rent_index' in ind:
 		 		rent_index = ''
@@ -142,56 +189,72 @@ def saveindices(data):
 		 	writer.writerow(row)
 
 
-def savecities(data):
-	with open('citylist.csv', 'r+') as citylist:
-		writer = csv.DictWriter(citylist, fieldnames = CSVHEADER_city)
+def saveprices(data):
+	# CSVHEADER_prices =  ["name", "average_price", "item_name", "highest_price", "item_id", "lowest_price", "data_points"]
+	with open('cityprices.csv', 'r+') as pricelist:
+		writer = csv.DictWriter(pricelist, fieldnames = CSVHEADER_prices)
 		writer.writeheader()
-		
-		for ct in data['cities']:
-		 	country = ct["country"]
-		 	location = ct["city"]
+		# print(data['name'])
+		for ct in data[:]:
 
-		 	#split city and state(and in some cases country name)
-		 	print("loc is", location)
-		 	city, state = splitcityname(location)
+			garbage = ''
+			location = ct["name"]
+			
+			if location.count(',')<2:
+				city, state =  location.split(',')
+			else:
+				city, state, garbage =  location.split(',')
 
-		 	# if value not present enter null
-		 	if not 'latitude' in ct :
-		 		latitude = ''
-		 	else:
-		 		latitude = ct["latitude"]
+			for dt in ct["prices"]:
 
-		 	#if value not present enter null
-		 	if not 'city_id' in ct :
-		 		city_id = ''
-		 	else:
-		 		city_id = ct["city_id"]
+				if not 'average_price' in dt:
+					average_price=''
+				else:
+					average_price=dt["average_price"]
 
-		 	#  if value not present enter null
-		 	if not 'longitude' in ct :
-		 		longitude = ''
-		 	else:
-		 		longitude = ct["longitude"]
+				if not 'item_name' in dt:
+					item_name=''
+				else:
+					item_name=dt["item_name"]
 
-		 	row = {}
-		 	row["country"] = country
-		 	row["city"] = city
-		 	row["state"] = state
-		 	row["latitude"] = latitude
-		 	row["city_id"] = city_id
-		 	row["longitude"] = longitude
+				if not 'highest_price' in dt:
+					highest_price=''
+				else:
+					highest_price=dt["highest_price"]
 
-		 	writer.writerow(row)
+				if not 'item_id' in dt:
+					item_id=''
+				else:
+					item_id=dt["item_id"]
 
+				if not 'lowest_price' in dt:
+					lowest_price=''
+				else:
+					lowest_price=dt["lowest_price"]
+
+				if not 'data_points' in dt:
+					data_points=''
+				else:
+					data_points=dt["data_points"]
+
+				row = {}
+				row["city"] = city
+				row["state"] = state
+				row["average_price"] = average_price
+				row["item_name"]= item_name
+				row["highest_price"] = highest_price
+				row["item_id"]= item_id
+				row["lowest_price"]= highest_price
+				row["data_points"]= data_points
+				writer.writerow(row)
 
 
 if __name__ == "__main__":
 	start_time = time.time()
 	cities = getcityinfo()
 	savecities(cities)
-	# print(allcitylist[:])
 	indices, prices = getinfo()
-	print(indices)
 	saveindices(indices)
+	saveprices(prices)
 	print("--- %s seconds ---" % (time.time() - start_time))
 

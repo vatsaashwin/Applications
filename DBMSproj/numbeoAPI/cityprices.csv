@@ -1,0 +1,203 @@
+city,state,average_price,item_name,highest_price,item_id,lowest_price,data_points
+Mansfield, TX,20,"Meal, Inexpensive Restaurant, Restaurants",20,1,20,2
+Mansfield, TX,57,"Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants",60,2,60,2
+Mansfield, TX,4,"Cappuccino (regular), Restaurants",4,114,4,2
+Mansfield, TX,6.5,"McMeal at McDonalds (or Equivalent Combo Meal), Restaurants",8,3,8,2
+Mansfield, TX,3,"Domestic Beer (0.5 liter draught), Restaurants",3,4,3,2
+Mansfield, TX,5.5,"Imported Beer (0.33 liter bottle), Restaurants",6,5,6,2
+Mansfield, TX,2,"Coke/Pepsi (0.33 liter bottle), Restaurants",2,6,2,2
+Mansfield, TX,1.65,"Water (0.33 liter bottle) , Restaurants",2,7,2,2
+Mansfield, TX,4162.444444444444,"Average Monthly Net Salary (After Tax), Salaries And Financing",6446,105,6446,9
+Ridley Park, PA,20,"Meal, Inexpensive Restaurant, Restaurants",,1,,1
+Ridley Park, PA,80,"Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants",,2,,1
+Ridley Park, PA,4,"Cappuccino (regular), Restaurants",,114,,1
+Ridley Park, PA,8,"McMeal at McDonalds (or Equivalent Combo Meal), Restaurants",,3,,1
+Ridley Park, PA,4,"Domestic Beer (0.5 liter draught), Restaurants",,4,,1
+Ridley Park, PA,5,"Imported Beer (0.33 liter bottle), Restaurants",,5,,1
+Ridley Park, PA,1.5,"Coke/Pepsi (0.33 liter bottle), Restaurants",,6,,1
+Ridley Park, PA,1.5,"Water (0.33 liter bottle) , Restaurants",,7,,1
+Superior, WI,72.5,"1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes",75,64,75,2
+Superior, WI,9.995000000000001,"Meal, Inexpensive Restaurant, Restaurants",10,1,10,2
+Superior, WI,32.5,"Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants",35,2,35,2
+Superior, WI,105,"1 Pair of Men Leather Business Shoes, Clothing And Shoes",150,66,150,2
+Superior, WI,7.62,"McMeal at McDonalds (or Equivalent Combo Meal), Restaurants",8,3,8,2
+Superior, WI,1.75,"Domestic Beer (0.5 liter draught), Restaurants",2,4,2,2
+Superior, WI,3.125,"Imported Beer (0.33 liter bottle), Restaurants",3.5,5,3.5,2
+Superior, WI,1.795,"Coke/Pepsi (0.33 liter bottle), Restaurants",2.09,6,2.09,2
+Superior, WI,0.995,"Water (0.33 liter bottle) , Restaurants",1,7,1,2
+Superior, WI,0.7700615334377175,"Milk (regular), (1 liter), Markets",0.7898744373855148,8,0.7898744373855148,2
+Superior, WI,1.1408922068067415,"Loaf of Fresh White Bread (500g), Markets",1.190496215798339,9,1.190496215798339,2
+Superior, WI,0.98,"Eggs (regular) (12), Markets",0.99,11,0.99,2
+Superior, WI,5.511556554621939,"Local Cheese (1kg), Markets",6.613867865546327,12,6.613867865546327,2
+Superior, WI,1.495,"Water (1.5 liter bottle), Markets",2,13,2,2
+Superior, WI,25,"Bottle of Wine (Mid-Range), Markets",30,14,30,2
+Superior, WI,27500,"Toyota Corolla 1.6l 97kW Comfort (Or Equivalent New Car), Transportation",40000,206,40000,2
+Superior, WI,2,"Domestic Beer (0.5 liter bottle), Markets",,15,,1
+Superior, WI,4.375,"Imported Beer (0.33 liter bottle), Markets",4.75,16,4.75,2
+Superior, WI,8.185,"Cigarettes 20 Pack (Marlboro), Markets",9,17,9,2
+Superior, WI,8.796444261176614,"Chicken Breasts (Boneless, Skinless), (1kg), Markets",8.818490487395103,19,8.818490487395103,2
+Superior, WI,30,"Monthly Pass (Regular Price), Transportation",,20,,1
+Superior, WI,0.710622821594326,"Gasoline (1 liter), Transportation",0.7872327168591418,24,0.7872327168591418,2
+Superior, WI,24000,"Volkswagen Golf 1.4 90 KW Trendline (Or Equivalent New Car), Transportation",30000,25,30000,2
+Superior, WI,905,"Apartment (1 bedroom) in City Centre, Rent Per Month",910,26,910,2
+Superior, WI,937.5,"Apartment (1 bedroom) Outside of Centre, Rent Per Month",1100,27,1100,2
+Superior, WI,1325,"Apartment (3 bedrooms) in City Centre, Rent Per Month",1500,28,1500,2
+Superior, WI,1137.5,"Apartment (3 bedrooms) Outside of Centre, Rent Per Month",1300,29,1300,2
+Superior, WI,215,"Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment, Utilities (Monthly)",230,30,230,2
+Superior, WI,130.66,"Internet (60 Mbps or More, Unlimited Data, Cable/ADSL), Utilities (Monthly)",201.32,33,201.32,2
+Superior, WI,45,"Fitness Club, Monthly Fee for 1 Adult, Sports And Leisure",,40,,1
+Superior, WI,1300,"Average Monthly Net Salary (After Tax), Salaries And Financing",,105,,1
+Superior, WI,3.85,"Mortgage Interest Rate in Percentages (%), Yearly, for 20 Years Fixed-Rate, Salaries And Financing",,106,,1
+Superior, WI,2.5,"Taxi Start (Normal Tariff), Transportation",,107,,1
+Superior, WI,20,"Cinema, International Release, 1 Seat, Sports And Leisure",,44,,1
+Superior, WI,1.7087707786526682,"Taxi 1km (Normal Tariff), Transportation",,108,,1
+Superior, WI,4.387199017479063,"Apples (1kg), Markets",4.409245243697551,110,4.409245243697551,2
+Superior, WI,3.5714886473950163,"Oranges (1kg), Markets",4.409245243697551,111,4.409245243697551,2
+Superior, WI,3.340003272100895,"Potato (1kg), Markets",4.409245243697551,112,4.409245243697551,2
+Superior, WI,0.88,"Lettuce (1 head), Markets",1,113,1,2
+Superior, WI,3.375,"Cappuccino (regular), Restaurants",3.75,114,3.75,2
+Superior, WI,3.3069339327731635,"Rice (white), (1kg), Markets",4.409245243697551,115,4.409245243697551,2
+Superior, WI,2.8329400690756765,"Tomato (1kg), Markets",3.3069339327731635,116,3.3069339327731635,2
+Superior, WI,1.6755131926050695,"Banana (1kg), Markets",2.1825763956302877,118,2.1825763956302877,2
+Superior, WI,2.5242929020168483,"Onion (1kg), Markets",3.3069339327731635,119,3.3069339327731635,2
+Superior, WI,9.920801798319491,"Beef Round (1kg) (or Equivalent Back Leg Red Meat), Markets",11.023113109243878,121,11.023113109243878,2
+Superior, WI,44.995,"1 Pair of Jeans (Levis 501 Or Similar), Clothing And Shoes",60,60,60,2
+Superior, WI,27.5,"1 Summer Dress in a Chain Store (Zara, H&M, ...), Clothing And Shoes",40,62,40,2
+South Yarmouth, MA,67.33333333333333,"1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes",90,64,90,1
+South Yarmouth, MA,14,"Meal, Inexpensive Restaurant, Restaurants",20,1,20,1
+South Yarmouth, MA,66.5,"Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants",77,2,77,1
+South Yarmouth, MA,94,"1 Pair of Men Leather Business Shoes, Clothing And Shoes",124,66,124,1
+South Yarmouth, MA,8,"McMeal at McDonalds (or Equivalent Combo Meal), Restaurants",9.5,3,9.5,1
+South Yarmouth, MA,5.25,"Domestic Beer (0.5 liter draught), Restaurants",7,4,7,1
+South Yarmouth, MA,6.5,"Imported Beer (0.33 liter bottle), Restaurants",7,5,7,1
+South Yarmouth, MA,1.498,"Coke/Pepsi (0.33 liter bottle), Restaurants",2,6,2,1
+South Yarmouth, MA,1.3333333333333333,"Water (0.33 liter bottle) , Restaurants",2,7,2,1
+South Yarmouth, MA,0.7995607459822157,"Milk (regular), (1 liter), Markets",1.0540464900228108,8,1.0540464900228108,1
+South Yarmouth, MA,2.2046226218487757,"Loaf of Fresh White Bread (500g), Markets",3.5825117605042607,9,3.5825117605042607,1
+South Yarmouth, MA,2.65,"Eggs (regular) (12), Markets",3.89,11,3.89,1
+South Yarmouth, MA,11.01576436717105,"Local Cheese (1kg), Markets",15.43235835294143,12,15.43235835294143,1
+South Yarmouth, MA,1.745,"Water (1.5 liter bottle), Markets",2,13,2,1
+South Yarmouth, MA,14,"Bottle of Wine (Mid-Range), Markets",20,14,20,1
+South Yarmouth, MA,20477.333333333332,"Toyota Corolla 1.6l 97kW Comfort (Or Equivalent New Car), Transportation",25000,206,25000,1
+South Yarmouth, MA,2,"Domestic Beer (0.5 liter bottle), Markets",2,15,2,1
+South Yarmouth, MA,2.975,"Imported Beer (0.33 liter bottle), Markets",3.5,16,3.5,1
+South Yarmouth, MA,10.95,"Cigarettes 20 Pack (Marlboro), Markets",11.5,17,11.5,1
+South Yarmouth, MA,7.705156063361471,"Chicken Breasts (Boneless, Skinless), (1kg), Markets",11.023113109243878,19,11.023113109243878,1
+South Yarmouth, MA,0.6822844824837075,"Gasoline (1 liter), Transportation",0.7898744373855148,24,0.7898744373855148,1
+South Yarmouth, MA,21000,"Volkswagen Golf 1.4 90 KW Trendline (Or Equivalent New Car), Transportation",24000,25,24000,1
+South Yarmouth, MA,164.48047286685897,"Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment, Utilities (Monthly)",283.3333333333333,30,283.3333333333333,1
+South Yarmouth, MA,0.1,"1 min. of Prepaid Mobile Tariff Local (No Discounts or Plans), Utilities (Monthly)",0.1,32,0.1,1
+South Yarmouth, MA,1056,"Preschool (or Kindergarten), Full Day, Private, Monthly for 1 Child, Childcare",1500,224,1500,1
+South Yarmouth, MA,77.9223076923077,"Internet (60 Mbps or More, Unlimited Data, Cable/ADSL), Utilities (Monthly)",100,33,100,1
+South Yarmouth, MA,2802.201966666667,"Price per Square Meter to Buy Apartment in City Centre, Buy Apartment Price",2927.7808,100,2927.7808,6
+South Yarmouth, MA,18000,"International Primary School, Yearly for 1 Child, Childcare",18000,228,18000,1
+South Yarmouth, MA,2802.201966666667,"Price per Square Meter to Buy Apartment Outside of Centre, Buy Apartment Price",2927.7808,101,2927.7808,6
+South Yarmouth, MA,4.2547916666666685,"Mortgage Interest Rate in Percentages (%), Yearly, for 20 Years Fixed-Rate, Salaries And Financing",4.54,106,4.54,1
+South Yarmouth, MA,3,"Taxi Start (Normal Tariff), Transportation",4,107,4,1
+South Yarmouth, MA,11,"Cinema, International Release, 1 Seat, Sports And Leisure",12,44,12,1
+South Yarmouth, MA,1.7087707786526682,"Taxi 1km (Normal Tariff), Transportation",3.1068559611866697,108,3.1068559611866697,1
+South Yarmouth, MA,25,"Taxi 1hour Waiting (Normal Tariff), Transportation",70,109,70,1
+South Yarmouth, MA,4.1667367552941865,"Apples (1kg), Markets",6.613867865546327,110,6.613867865546327,1
+South Yarmouth, MA,2.2046226218487757,"Oranges (1kg), Markets",3.3069339327731635,111,3.3069339327731635,1
+South Yarmouth, MA,1.3227735731092654,"Potato (1kg), Markets",3.3069339327731635,112,3.3069339327731635,1
+South Yarmouth, MA,1.5,"Lettuce (1 head), Markets",2,113,2,1
+South Yarmouth, MA,3.8333333333333335,"Cappuccino (regular), Restaurants",4.5,114,4.5,1
+South Yarmouth, MA,3.3069339327731635,"Rice (white), (1kg), Markets",4.409245243697551,115,4.409245243697551,1
+South Yarmouth, MA,3.6596735522689676,"Tomato (1kg), Markets",4.387199017479063,116,4.387199017479063,1
+South Yarmouth, MA,1.2345886682353144,"Banana (1kg), Markets",1.5432358352941429,118,1.5432358352941429,1
+South Yarmouth, MA,1.3448197993277533,"Onion (1kg), Markets",2.2046226218487757,119,2.2046226218487757,1
+South Yarmouth, MA,11.023113109243878,"Beef Round (1kg) (or Equivalent Back Leg Red Meat), Markets",15.43235835294143,121,15.43235835294143,1
+South Yarmouth, MA,37.666666666666664,"1 Pair of Jeans (Levis 501 Or Similar), Clothing And Shoes",60,60,60,1
+South Yarmouth, MA,31.666666666666668,"1 Summer Dress in a Chain Store (Zara, H&M, ...), Clothing And Shoes",49,62,49,1
+Stillwater, MN,69.99,"1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes",,64,,1
+Stillwater, MN,8.25,"Meal, Inexpensive Restaurant, Restaurants",9,1,9,2
+Stillwater, MN,42.5,"Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants",50,2,50,2
+Stillwater, MN,89.99,"1 Pair of Men Leather Business Shoes, Clothing And Shoes",,66,,1
+Stillwater, MN,6.75,"McMeal at McDonalds (or Equivalent Combo Meal), Restaurants",7,3,7,2
+Stillwater, MN,5,"Domestic Beer (0.5 liter draught), Restaurants",,4,,1
+Stillwater, MN,5,"Imported Beer (0.33 liter bottle), Restaurants",,5,,1
+Stillwater, MN,3,"Coke/Pepsi (0.33 liter bottle), Restaurants",,6,,1
+Stillwater, MN,3,"Water (0.33 liter bottle) , Restaurants",,7,,1
+Stillwater, MN,0.6736387342251047,"Milk (regular), (1 liter), Markets",0.6868473368569694,8,0.6868473368569694,2
+Stillwater, MN,3.3069339327731635,"Loaf of Fresh White Bread (500g), Markets",,9,,1
+Stillwater, MN,1,"Eggs (regular) (12), Markets",,11,,1
+Stillwater, MN,11.023113109243878,"Local Cheese (1kg), Markets",,12,,1
+Stillwater, MN,2,"Water (1.5 liter bottle), Markets",,13,,1
+Stillwater, MN,10,"Bottle of Wine (Mid-Range), Markets",,14,,1
+Stillwater, MN,1.5,"Domestic Beer (0.5 liter bottle), Markets",,15,,1
+Stillwater, MN,2,"Imported Beer (0.33 liter bottle), Markets",,16,,1
+Stillwater, MN,8.5,"Cigarettes 20 Pack (Marlboro), Markets",9,17,9,2
+Stillwater, MN,6.613867865546327,"Chicken Breasts (Boneless, Skinless), (1kg), Markets",,19,,1
+Stillwater, MN,725,"Apartment (1 bedroom) in City Centre, Rent Per Month",,26,,1
+Stillwater, MN,650,"Apartment (1 bedroom) Outside of Centre, Rent Per Month",,27,,1
+Stillwater, MN,1350,"Apartment (3 bedrooms) in City Centre, Rent Per Month",,28,,1
+Stillwater, MN,1100,"Apartment (3 bedrooms) Outside of Centre, Rent Per Month",,29,,1
+Stillwater, MN,203.31830777777776,"Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment, Utilities (Monthly)",,30,,1
+Stillwater, MN,19.99,"Internet (60 Mbps or More, Unlimited Data, Cable/ADSL), Utilities (Monthly)",,33,,1
+Stillwater, MN,19.99,"Fitness Club, Monthly Fee for 1 Adult, Sports And Leisure",,40,,1
+Stillwater, MN,10,"Cinema, International Release, 1 Seat, Sports And Leisure",,44,,1
+Stillwater, MN,8.818490487395103,"Apples (1kg), Markets",,110,,1
+Stillwater, MN,8.818490487395103,"Oranges (1kg), Markets",,111,,1
+Stillwater, MN,2.2046226218487757,"Potato (1kg), Markets",,112,,1
+Stillwater, MN,2,"Lettuce (1 head), Markets",,113,,1
+Stillwater, MN,5,"Cappuccino (regular), Restaurants",,114,,1
+Stillwater, MN,2.2046226218487757,"Rice (white), (1kg), Markets",,115,,1
+Stillwater, MN,6.613867865546327,"Tomato (1kg), Markets",,116,,1
+Stillwater, MN,1.7636980974790206,"Banana (1kg), Markets",,118,,1
+Stillwater, MN,2.2046226218487757,"Onion (1kg), Markets",,119,,1
+Stillwater, MN,6.613867865546327,"Beef Round (1kg) (or Equivalent Back Leg Red Meat), Markets",,121,,1
+Stillwater, MN,39.99,"1 Pair of Jeans (Levis 501 Or Similar), Clothing And Shoes",,60,,1
+Greeley, CO,12,"Meal, Inexpensive Restaurant, Restaurants",15,1,15,11
+Greeley, CO,50,"Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants",70,2,70,11
+Greeley, CO,7,"McMeal at McDonalds (or Equivalent Combo Meal), Restaurants",8,3,8,11
+Greeley, CO,4,"Domestic Beer (0.5 liter draught), Restaurants",6,4,6,11
+Greeley, CO,5.5,"Imported Beer (0.33 liter bottle), Restaurants",6.5,5,6.5,11
+Greeley, CO,1.725,"Coke/Pepsi (0.33 liter bottle), Restaurants",2,6,2,11
+Greeley, CO,1.5,"Water (0.33 liter bottle) , Restaurants",2,7,2,11
+Greeley, CO,0.7594946513322257,"Milk (regular), (1 liter), Markets",1.0566882105491837,8,1.0566882105491837,11
+Greeley, CO,2.7557782773109696,"Loaf of Fresh White Bread (500g), Markets",3.3069339327731635,9,3.3069339327731635,11
+Greeley, CO,2.6510000000000002,"Eggs (regular) (12), Markets",3.25,11,3.25,11
+Greeley, CO,12.114401307059023,"Local Cheese (1kg), Markets",17.636980974790205,12,17.636980974790205,11
+Greeley, CO,1.125,"Water (1.5 liter bottle), Markets",2,13,2,11
+Greeley, CO,12,"Bottle of Wine (Mid-Range), Markets",15,14,15,11
+Greeley, CO,1.9224436090225565,"Domestic Beer (0.5 liter bottle), Markets",2,15,2,11
+Greeley, CO,2,"Imported Beer (0.33 liter bottle), Markets",2,16,2,11
+Greeley, CO,6,"Cigarettes 20 Pack (Marlboro), Markets",6.5,17,6.5,11
+Greeley, CO,4,"One-way Ticket (Local Transport), Transportation",5,18,5,3
+Greeley, CO,7.716179176470715,"Chicken Breasts (Boneless, Skinless), (1kg), Markets",11.023113109243878,19,11.023113109243878,11
+Greeley, CO,22,"Monthly Pass (Regular Price), Transportation",25,20,25,2
+Greeley, CO,0.6838534564630635,"Gasoline (1 liter), Transportation",0.7634572321217852,24,0.7634572321217852,11
+Greeley, CO,22000,"Volkswagen Golf 1.4 90 KW Trendline (Or Equivalent New Car), Transportation",24000,25,24000,11
+Greeley, CO,1283.3333333333333,"Apartment (1 bedroom) in City Centre, Rent Per Month",1350,26,1350,3
+Greeley, CO,1350,"Apartment (1 bedroom) Outside of Centre, Rent Per Month",1500,27,1500,2
+Greeley, CO,1783.3333333333333,"Apartment (3 bedrooms) in City Centre, Rent Per Month",1900,28,1900,3
+Greeley, CO,1966.6666666666667,"Apartment (3 bedrooms) Outside of Centre, Rent Per Month",2100,29,2100,3
+Greeley, CO,132.5,"Basic (Electricity, Heating, Cooling, Water, Garbage) for 85m2 Apartment, Utilities (Monthly)",200,30,200,11
+Greeley, CO,0.1,"1 min. of Prepaid Mobile Tariff Local (No Discounts or Plans), Utilities (Monthly)",0.1,32,0.1,11
+Greeley, CO,62.165,"Internet (60 Mbps or More, Unlimited Data, Cable/ADSL), Utilities (Monthly)",90,33,90,11
+Greeley, CO,10,"Fitness Club, Monthly Fee for 1 Adult, Sports And Leisure",35,40,35,2
+Greeley, CO,11.666666666666666,"Tennis Court Rent (1 Hour on Weekend), Sports And Leisure",23,42,23,3
+Greeley, CO,10.5,"Cinema, International Release, 1 Seat, Sports And Leisure",12,44,12,11
+Greeley, CO,44,"1 Pair of Jeans (Levis 501 Or Similar), Clothing And Shoes",55,60,55,11
+Greeley, CO,35,"1 Summer Dress in a Chain Store (Zara, H&M, ...), Clothing And Shoes",48,62,48,11
+Greeley, CO,80,"1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes",100,64,100,11
+Greeley, CO,99.26923076923077,"1 Pair of Men Leather Business Shoes, Clothing And Shoes",120,66,120,11
+Greeley, CO,21499.5,"Toyota Corolla 1.6l 97kW Comfort (Or Equivalent New Car), Transportation",26000,206,26000,11
+Greeley, CO,1000,"Preschool (or Kindergarten), Full Day, Private, Monthly for 1 Child, Childcare",1500,224,1500,11
+Greeley, CO,1184.0301458380693,"Price per Square Meter to Buy Apartment in City Centre, Buy Apartment Price",,100,,1
+Greeley, CO,18000,"International Primary School, Yearly for 1 Child, Childcare",18207,228,18207,11
+Greeley, CO,2124,"Average Monthly Net Salary (After Tax), Salaries And Financing",3417,105,3417,11
+Greeley, CO,4.375,"Mortgage Interest Rate in Percentages (%), Yearly, for 20 Years Fixed-Rate, Salaries And Financing",4.54,106,4.54,11
+Greeley, CO,2.55,"Taxi Start (Normal Tariff), Transportation",3.25,107,3.25,11
+Greeley, CO,1.3980851825340013,"Taxi 1km (Normal Tariff), Transportation",1.8641135767120018,108,1.8641135767120018,11
+Greeley, CO,22.499999955,"Taxi 1hour Waiting (Normal Tariff), Transportation",22.5,109,22.5,11
+Greeley, CO,4.409245243697551,"Apples (1kg), Markets",5.511556554621939,110,5.511556554621939,11
+Greeley, CO,3.7368353440336746,"Oranges (1kg), Markets",5.511556554621939,111,5.511556554621939,11
+Greeley, CO,2.2046226218487757,"Potato (1kg), Markets",4.409245243697551,112,4.409245243697551,11
+Greeley, CO,1,"Lettuce (1 head), Markets",1.99,113,1.99,11
+Greeley, CO,4.171250000000001,"Cappuccino (regular), Restaurants",5,114,5,11
+Greeley, CO,4.409245243697551,"Rice (white), (1kg), Markets",6.613867865546327,115,6.613867865546327,11
+Greeley, CO,4.409245243697551,"Tomato (1kg), Markets",4.409245243697551,116,4.409245243697551,11
+Greeley, CO,1.631420740168094,"Banana (1kg), Markets",2.2046226218487757,118,2.2046226218487757,11
+Greeley, CO,2.2046226218487757,"Onion (1kg), Markets",3.3069339327731635,119,3.3069339327731635,11
+Greeley, CO,11.63639903859454,"Beef Round (1kg) (or Equivalent Back Leg Red Meat), Markets",13.205689504874167,121,13.205689504874167,11

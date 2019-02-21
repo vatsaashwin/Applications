@@ -3,8 +3,6 @@ import json
 import time
 import numpy as np
 
-# https://www.numbeo.com/api/indices?api_key=ha1vwlcog85my4&query=Midlothian
-
 CSVHEADER_city = ["country", "city", "state", "latitude", "city_id", "longitude"]
 CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","groceries_index","safety_index","city", "state","rent_index","property_price_to_income_ratio"]
 CSVHEADER_prices =  ["city", "state", "average_price", "item_name", "highest_price", "item_id", "lowest_price", "data_points"]
@@ -17,7 +15,6 @@ def getcityinfo():
 	  }
 	r = requests.get('https://www.numbeo.com/api/cities?api_key=ha1vwlcog85my4&country=United+States', params=params)
 	data = json.loads(r.text)
-	# print(data)
 	return data
 
 def getinfo():
@@ -28,6 +25,7 @@ def getinfo():
 	count =0
 	indexlist=[]
 	pricelist=[]
+	print("Data assessed for:")
 	for city in allcitylist[:]: 
 		count=count+1 
 		if len(city)>0:
@@ -55,7 +53,6 @@ def splitcityname(str):
 	a=''
 	b=''
 	garbage=''
-	# print("printing str", str)
 	
 	if ',' not in str:
 		a=str
@@ -80,7 +77,6 @@ def savecities(data):
 		 	location = ct["city"]
 
 		 	#split city and state(and in some cases country name)
-		 	# print("loc is", location)
 		 	city, state = splitcityname(location)
 
 		 	# if value not present enter null
@@ -89,13 +85,11 @@ def savecities(data):
 		 	else:
 		 		latitude = ct["latitude"]
 
-		 	#if value not present enter null
 		 	if not 'city_id' in ct :
 		 		city_id = ''
 		 	else:
 		 		city_id = ct["city_id"]
 
-		 	#  if value not present enter null
 		 	if not 'longitude' in ct :
 		 		longitude = ''
 		 	else:
@@ -116,8 +110,7 @@ def saveindices(data):
 	with open('indexlist.csv', 'w+') as indexlist:
 		writer = csv.DictWriter(indexlist, fieldnames = CSVHEADER_indexes)
 		writer.writeheader()
-		# CSVHEADER_indexes = ["health_care_index","crime_index","pollution_index","traffic_index","quality_of_life_index","cpi_and_rent_index","groceries_index","safety_index","cityname","rent_index","property_price_to_income_ratio"]
-
+		
 		for ind in data[:]:
 			 # if value not present enter null
 		 	if not 'health_care_index' in ind :
@@ -190,11 +183,9 @@ def saveindices(data):
 
 
 def saveprices(data):
-	# CSVHEADER_prices =  ["name", "average_price", "item_name", "highest_price", "item_id", "lowest_price", "data_points"]
 	with open('cityprices.csv', 'r+') as pricelist:
 		writer = csv.DictWriter(pricelist, fieldnames = CSVHEADER_prices)
 		writer.writeheader()
-		# print(data['name'])
 		for ct in data[:]:
 
 			garbage = ''

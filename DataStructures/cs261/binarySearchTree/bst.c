@@ -22,7 +22,10 @@ struct BSTree{
 
 struct BSTreeIterator{
 /* TODO: Define an iterator for a binary search tree; */
-	
+    struct BSTree *tree;
+    struct LinkedList *llist;
+    struct node *current;
+    
 };
 
 
@@ -163,6 +166,21 @@ struct BSTree *buildBSTree() {
 void _freeBST(struct node *node)
 {
 /* TODO: Complete this implementation */
+//    if(node->left == NULL && node->right == NULL){
+//        free(node);
+//        return;
+//    }
+//    if(node==NULL){
+//        return;
+//    }
+    if (node != 0) {
+        _freeBST(node->left);
+        node->left = 0;
+        _freeBST(node->right);
+        node->right = 0;
+        free(node);
+        return;
+    }
 }
 
 
@@ -189,6 +207,13 @@ void deleteBSTree(struct BSTree *bstree)
 
 void _printNode(struct node *node) {
 /* TODO: Complete this implementation */
+    if(node==0)
+        {return;}
+    printf("(");
+    _printNode(node->left);
+    printf("%d", node->value);
+    _printNode(node->right);
+    printf(")");
 }
 
 void printBSTree(struct BSTree *tree) {
@@ -214,6 +239,13 @@ void printBSTree(struct BSTree *tree) {
  */
 struct BSTreeIterator* BSTIteratorCreate(struct BSTree* tree) {
 /* TODO: Complete this implementation */
+    struct BSTreeIterator *iter = malloc(sizeof(struct BSTreeIterator));
+    assert(iter);
+    iter->tree = tree;
+    iter->current = tree->root;
+    iter->llist = createLinkedList();
+    
+    return iter;
 }
 
 /*
@@ -224,6 +256,10 @@ struct BSTreeIterator* BSTIteratorCreate(struct BSTree* tree) {
  */
 void BSTIteratorFree(struct BSTreeIterator* iter) {
 /* TODO: Complete this implementation */
+    assert(iter);
+    assert(iter->tree);
+    deleteLinkedList(iter->llist);
+    free(iter);
 }
 
 
@@ -237,6 +273,12 @@ void BSTIteratorFree(struct BSTreeIterator* iter) {
  */
 int BSTIteratorHasNext(struct BSTreeIterator* iter) {
 /* TODO: Complete this implementation */
+    while(iter->current != NULL){
+        pushLinkedList(iter->llist, iter->current);
+        iter->current = iter->current->left;
+    }
+    
+    return !isEmptyLinkedList(iter->llist);
 }
 
 
@@ -250,6 +292,17 @@ int BSTIteratorHasNext(struct BSTreeIterator* iter) {
  */
 int BSTIteratorNext(struct BSTreeIterator* iter) {
 /* TODO: Complete this implementation */
+    assert(iter);
+    struct node* top = (struct node*) topLinkedList(iter->llist);
+    popLinkedList(iter->llist);
+    
+    if(top->right){
+        iter->current = top->right;
+        
+    }
+    else iter->current = NULL;
+    
+    return (int)top->value;
 }
 
 

@@ -109,15 +109,15 @@ void pq_insert(struct pq* pq, void* item, int priority) {
     dynarray_insert(pq->heap,ch_idx,elem); // insert new element to last index
     
     while(ch_idx != 0){
-        int pa_idx = (ch_idx-1)/2;
-        struct pq_elem* pa = dynarray_get(pq->heap,pa_idx);
-        if(elem->priority >= pa->priority){
+        int par_idx = (ch_idx-1)/2;
+        struct pq_elem* par = dynarray_get(pq->heap,par_idx);
+        if(elem->priority >= par->priority){
             break;
         }
         
-        dynarray_set(pq->heap,ch_idx,pa);
-        dynarray_set(pq->heap, pa_idx, elem);
-        ch_idx = pa_idx;
+        dynarray_set(pq->heap,ch_idx,par);
+        dynarray_set(pq->heap, par_idx, elem);
+        ch_idx = par_idx;
     }
     
 
@@ -134,12 +134,12 @@ void* pq_first(struct pq* pq) {
     assert(pq);
     assert(dynarray_size(pq->heap) > 0);
     /* FIXME: Complete this function */
-    struct pq_elem* first_elem = NULL;
-    first_elem = dynarray_get(pq->heap,0);
+    struct pq_elem* first_el = NULL;
+    first_el = dynarray_get(pq->heap,0);
     
-    if (first_elem != NULL)
+    if (first_el != NULL)
     {
-        return first_elem->item;
+        return first_el->item;
     }
     else
     {
@@ -159,7 +159,7 @@ void* pq_first(struct pq* pq) {
         assert(pq);
         assert(dynarray_size(pq->heap) > 0);
         
-        struct pq_elem* first_elem = NULL;
+        struct pq_elem* first_el = NULL;
         
         if(pq_isempty(pq)){
             exit(1);
@@ -172,8 +172,8 @@ void* pq_first(struct pq* pq) {
        * value there in first_elem.
        */
 
-        first_elem = dynarray_get(pq->heap,0);
-        struct pq_elem* last_elem = dynarray_get(pq->heap, -1);
+        first_el = dynarray_get(pq->heap,0);
+        struct pq_elem* last_el = dynarray_get(pq->heap, -1);
         dynarray_remove(pq->heap,-1);
         
       /*
@@ -183,9 +183,9 @@ void* pq_first(struct pq* pq) {
        */
 
         if(pq_isempty(pq)){
-            if (first_elem != NULL) {
-                void* item = first_elem->item;
-                free(first_elem);
+            if (first_el != NULL) {
+                void* item = first_el->item;
+                free(first_el);
                 return item;
             } else {
                 return NULL;
@@ -202,7 +202,7 @@ void* pq_first(struct pq* pq) {
        * to write a helper function to accomplish this percolation down.
        */
 
-        dynarray_set(pq->heap, 0, last_elem);
+        dynarray_set(pq->heap, 0, last_el);
         
         int ch_idx = dynarray_size(pq->heap)-1;
         int pa_idx = 0;
@@ -217,23 +217,23 @@ void* pq_first(struct pq* pq) {
             } // compare two children, and choose smallest one
             
             struct pq_elem* min = dynarray_get(pq->heap,tem);
-            if(last_elem->priority <= min->priority){
+            if(last_el->priority <= min->priority){
                 break;
-            } // compare parent with child, if child is biger than parent, then break
+            } // compare parent with child, if child is bigger than parent-> break
             
             dynarray_set(pq->heap,pa_idx,min);
             pa_idx = tem;
             tem = 2*pa_idx+1;
-            // move to compare next child
+            // compare next child
         }
       /*
        * Return the extracted item, if the element taken out of the priority
        * queue is not NULL.
        */
-        dynarray_set(pq->heap,pa_idx,last_elem);
+        dynarray_set(pq->heap,pa_idx,last_el);
         
-        if (first_elem != NULL) {
-            return first_elem;
+        if (first_el != NULL) {
+            return first_el;
         } else {
             return NULL;
         }

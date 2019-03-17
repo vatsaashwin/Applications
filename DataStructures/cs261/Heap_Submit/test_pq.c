@@ -3,7 +3,7 @@
 
 #include "pq.h"
 
-int main(int argc, char** argv) {
+int main (int argc, char** argv) {
 
   struct pq* pq = pq_create();
   int nums[16] = { 16, 8, 24, 64, 12, 4, 32, 2, 48, 80, 88, 20, 40, 6, 72, 96 };

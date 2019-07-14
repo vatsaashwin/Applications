@@ -7,33 +7,43 @@ import numpy as np
 import random
 
 #read input from mstest.txt file into two lists: alist-list of arrays and oplist-list of output
-def testinput():
+def testinput(test):
 	inputList = []
 	alist=[]
 	oplist=[]
 
-	with open('mstest.txt') as file:
-		for lines in file:
-			inputList.append(lines.strip())
+	if test=='random':
+		alist = generateArrays()
+
+
+	if test=='mstest':
+		with open('mstest.txt') as file:
+			for lines in file:
+				inputList.append(lines.strip())
 				
-		for i in inputList:
-			if i:
-				y = i.rsplit(",", 1)[0]
-				z = y[1:-1].split(",")
-				alist.append(z)					
-				oplist.append(i.rsplit(",", 1)[-1]) 
+			for i in inputList:
+				if i:
+					y = i.rsplit(",", 1)[0]
+					z = y[1:-1].split(",")
+					alist.append(z)
+					oplist.append(i.rsplit(",", 1)[-1]) 
 
-	return alist, oplist
+		return alist, oplist
 
-#You may need to change values for generating random arrays from 1000, 9000
+
 def generateArrays():
-	i=100		#change this to 1000
-	n = 900		#change this to 9000
+	i=1000
+	n = 9000
 	arr = [];
 	while i<=n:
+		# print(i)
 		randArr = np.random.randint(-100, 100, i)
+		# randArr = "["+(','.join(map(str, randArr)))+"]"
+
 		arr.append(randArr.tolist())
-		i+=100 			#change this to 1000
+		# print("_____________________", i)
+		i+=1000
+	print(arr)
 	return arr
 		
 
@@ -179,20 +189,26 @@ def runAlgorithm(num, alist, oplist):
 	
 
 if __name__ == '__main__':
+
+	alist, oplist=testinput('mstest')
+	# print(alist)
+
+	# #Parsing oplist items to int
+	# oplist = list(map(int, oplist))
 	
-	#running the algo for random arrays:
-	oplist=[]
+	# runAlgorithm(1, alist, oplist)
+	# runAlgorithm(2, alist, oplist)
+	# runAlgorithm(3, alist, oplist)
+	# generateArrays()
+
 	alist= generateArrays()
-	runAlgorithm(1, alist, oplist)
+	# runAlgorithm(1, alist, oplist)
 	runAlgorithm(2, alist, oplist)
-	runAlgorithm(3, alist, oplist)
+	# plt.plot(timeTaken, asize, 'ro')
+	# plt.ylabel('time taken')
+	# plt.xlabel('array size')
+	# # plt.axis([ 2, 4, 6, 8, 10])
+	# plt.show()
 
-	#running the algo for test file:
-	alist, oplist=testinput()
-
-	#Parsing oplist items to int
-	oplist = list(map(int, oplist))
-	runAlgorithm(1, alist, oplist)
-	runAlgorithm(2, alist, oplist)
-	runAlgorithm(3, alist, oplist)
+	#generating file to write random arrays in a file
 

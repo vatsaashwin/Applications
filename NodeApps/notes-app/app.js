@@ -1,9 +1,9 @@
 // npm module: validator
-const validator = require("validator");
+const chalk = require("chalk");
 const getNotes = require("./notes.js");
 
 const notes = getNotes();
 console.log(notes);
 // test validator package
-console.log(validator.isEmail("aashwinvats@gmailcom"));
-console.log(validator.isURL("https:/.com"));
+// chain things together
+console.log(chalk.cyan.inverse.bold("Success!"));

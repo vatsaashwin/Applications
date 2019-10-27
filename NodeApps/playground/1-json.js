@@ -1,18 +1,16 @@
 const fs = require("fs");
 
-// const book = {
-//   title: "Ego is the Enemy",
-//   author: "Ryan Holiday"
-// };
+// Challenge
+// Load the data
+const loadData = fs.readFileSync("1-json.json");
+// converting data into string
+const dataJSON = loadData.toString();
+// Parsing data into JSON object
+const dataParsed = JSON.parse(dataJSON);
 
-// // JSON object gives us JSON string
-// const bookJSON = JSON.stringify(book);
-// fs.writeFileSync("1-json.json", bookJSON);
-// Read the file and get binary data
-const dataBuffer = fs.readFileSync("1-json.json");
-// Convert that binary data into standard string in JS
-const dataJSON = dataBuffer.toString();
-// Parsed the string into JSON object
-const data = JSON.parse(dataJSON);
-// Accessed a property from it
-console.log(data.title);
+dataParsed.name = "Aashwin";
+dataParsed.age = "26";
+
+// here we stringify the json object
+const name = JSON.stringify(dataParsed);
+fs.writeFileSync("1-json.json", name);

@@ -1,15 +1,4 @@
-console.log("Starting...");
-
-setTimeout(() => {
-  console.log("2 second timer");
-}, 2000);
-
-setTimeout(() => {
-  console.log("0 second timer");
-}, 0);
-
-console.log("Stopping....");
-
+// Run code and see output.
 // Why does 0 second timer print after Stopping...?
 // Lessions learned:
 // How async node works:
@@ -32,3 +21,15 @@ console.log("Stopping....");
 // Looks at Call stack and Callback Queue
 // If the Call stack is empty, it moves the fn from callback Q to Call Stack
 // If not,waits.
+
+console.log("Starting...");
+
+setTimeout(() => {
+  console.log("2 second timer");
+}, 2000);
+
+setTimeout(() => {
+  console.log("0 second timer");
+}, 0);
+
+console.log("Stopping....");

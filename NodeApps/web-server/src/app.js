@@ -38,14 +38,34 @@ app.get('/help', (req, res) => {
         name: 'Aashwin Vats'
 
     })
-
 })
 
 // can send back JSON object
 app.get('/weather', (req, res) => {
+
+    if (!req.query.address) {
+        return res.send({
+            error: 'Provide an address!'
+        })
+    }
+    // console.log(req.query.address)
     res.send({
-        forecast: 'Its 50 degrees',
-        location: 'Boston'
+        forecast: 'Its -1 degrees',
+        location: 'Boston',
+        address: req.query.address
+    })
+})
+
+app.get('/products', (req, res) => {
+
+    if (!req.query.search) {
+        return res.send({
+            error: 'You must provide a search term.'
+        })
+    }
+    console.log(req.query.search)
+    res.send({
+        products: []
     })
 })
 

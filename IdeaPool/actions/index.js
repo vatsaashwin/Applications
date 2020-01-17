@@ -7,7 +7,7 @@ const BASE_URL = "http://localhost:3000"
 
 const CATEGORY_DATA = [
     { id: '0', name: 'All' },
-    { id: '1', name: 'HTML | CSS' },
+    { id: '1', name: 'HTML/CSS' },
     { id: '2', name: 'JavaScript' },
     { id: '3', name: 'React.js' },
     { id: '4', name: 'Node.js' },
@@ -16,7 +16,10 @@ const CATEGORY_DATA = [
     { id: '7', name: 'PHP' },
     {
         id: '8', name: 'Ruby on Rails'
-    }
+    },
+    { id: '9', name: 'Java' },
+    { id: '10', name: 'C#/.Net' },
+    { id: '11', name: 'Python' }
 ]
 
 export const getCategories = () => {

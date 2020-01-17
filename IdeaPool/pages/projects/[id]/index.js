@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { getProjectById, deleteProject } from '../../../actions'
 import Link from 'next/link'
 
+
 const Project = (props) => {
     const router = useRouter()
     const { id } = router.query
@@ -15,7 +16,6 @@ const Project = (props) => {
         })
     }
 
-
     return (
         <div className="container">
             <div className="jumbotron">
@@ -23,22 +23,28 @@ const Project = (props) => {
                 <p className="lead">{project.description}</p>
                 <hr className="my-4" />
                 <p>{project.tech}</p>
-                <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Request to Collab</button>
-                <button onClick={() => handleDeleteProject(id)} className="btn btn-danger btn-lg mr-1" href="#" role="button">Delete</button>
                 <Link href="/projects/[id]/edit" as={`/projects/${id}/edit`}>
                     <button
-                        className="btn btn-warning btn-lg"
+                        className="btn btn-warning btn-lg mr-1"
                         role="button">Edit</button>
                 </Link>
+                <button onClick={() => handleDeleteProject(id)} className="btn btn-danger btn-lg mr-1" href="#" role="button">Delete</button>
+
+                <p className="info-p">Request to Collab at: {project.email ? project.email : 'Email not provided'} </p>
+
             </div>
             <p className="desc-text">{project.longDesc}</p>
             <style jsx>{`
                 .desc-text {
                 font-size: 21px;
                 }
+                .info-p{
+                    font-size: 15px;
+                    padding: 20px
+                }
             `}
             </style>
-        </div>
+        </div >
     )
 }
 

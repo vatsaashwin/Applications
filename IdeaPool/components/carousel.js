@@ -8,15 +8,17 @@ const Carousel = (props) => {
             className="carousel slide my-4"
             data-ride="carousel">
             <ol className="carousel-indicators">
-                {images.map((image, index) => (
-                    <li
-                        key={image.id}
-                        data-target="#carouselExampleIndicators"
-                        data-slide-to={index}
-                        className={index === 0 ? 'active' : ''}>
-                    </li>
-                )
-                )
+                {
+
+                    images.map((image, index) => (
+                        <li
+                            key={image.id}
+                            data-target="#carouselExampleIndicators"
+                            data-slide-to={index}
+                            className={index === 0 ? 'active' : ''}>
+                        </li>
+                    )
+                    )
                 }
             </ol>
             <div className="carousel-inner" role="listbox">

@@ -7,8 +7,6 @@ import { createProject } from '../actions'
 const Sidemenu = (props) => {
     const { categories } = props
     const router = useRouter()
-
-
     let modal = null
 
     const handleCreateProject = (project) => {

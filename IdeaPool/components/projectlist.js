@@ -16,7 +16,7 @@ class Projectlist extends React.Component {
             (
                 <div key={project.id} className="col-lg-4 col-md-6 mb-4">
                     <div className="card h-100">
-                        <Link href="/projects/[id]" as={`/projects/${project.id}`}><a ><img className="card-img-top" src={project.image} alt="" /></a></Link>
+                        <Link href="/projects/[id]" as={`/projects/${project.id}`}><a ><img className="card-img-top" height='210px' width='100px' src={project.image} alt="" /></a></Link>
                         <div className="card-body">
                             <h4 className="card-title">
                                 <Link href="/projects/[id]" as={`/projects/${project.id}`}>

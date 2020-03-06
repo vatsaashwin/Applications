@@ -1,4 +1,17 @@
 import Link from 'next/link'
+import auth0 from '../services/auth0'
+
+const Login = () => {
+    return (
+        <span onClick={auth0.login} className="nav-link port-navbar-link clickable"> Login </span>
+    )
+}
+
+const Logout = () => {
+    return (
+        <span onClick={auth0.logout} className="nav-link port-navbar-link clickable"> Logout </span>
+    )
+}
 
 const Navbar = () => {
     return (
@@ -22,6 +35,17 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link href="/Contact"><a className="nav-link" >Contact</a></Link>
                         </li>
+                        {!auth0.isAuthenticated() &&
+                            <li className="nav-item">
+                                <Login />
+                            </li>
+                        }
+                        {auth0.isAuthenticated() &&
+                            <li className="nav-item">
+                                <Logout />
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

@@ -4,14 +4,18 @@ import Head from 'next/head'
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import '../styles/index.scss'
+import auth0 from '../services/auth0'
 
 
-class ProjectApp extends App {
+export default class ProjectApp extends App {
     // TODO: execute here getInitialProps and pass this data to your page
 
-    static async getInitialProps(appContext) {
+    static async getInitialProps(ctx) {
+        // const req = JSON.stringify(ctx.req)
+        const isAuthenticated = process.browser ? auth0.clientAuth() : auth0.serverAuth(ctx.req)
+        console.log(isAuthenticated)
         // Executing getInitialProps of page you are navigated to
-        const appProps = await App.getInitialProps(appContext)
+        const appProps = await App.getInitialProps(ctx)
         return { ...appProps }
     }
 
@@ -20,6 +24,8 @@ class ProjectApp extends App {
         // Component hold page you are navigating to
         const { Component, pageProps } = this.props
         return (
+            // <div>Hi</div>
+
             <div>
                 <Head>
                     <title>Home</title>
@@ -48,4 +54,4 @@ class ProjectApp extends App {
 }
 
 
-export default ProjectApp
+// export default ProjectApp

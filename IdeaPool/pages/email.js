@@ -31,7 +31,7 @@ class Email extends Component {
     }
 
     render() {
-        <Form onSubmit={this.handleSubmit} style={{ width: '600px' }}>
+        <Form onSubmit={this.handleSubmit} style={{ width: '600px' }} >
             <FormGroup>
                 <Label for="name">Name:</Label>
                 <Input

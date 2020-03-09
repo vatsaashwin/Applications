@@ -17,7 +17,7 @@ const Project = (props) => {
     }
 
     return (
-        <div className="container">
+        <div className="container" {...props.auth}>
             <div className="jumbotron">
                 <h1 className="display-4">{project.name}</h1>
                 <p className="lead">{project.description}</p>

@@ -1,7 +1,56 @@
 
 import { useState, useEffect } from 'react'
+import axios, { post } from 'axios'
 
 const ProjectCreateform = (props) => {
+
+    // const state = {
+    //     file: null
+    // }
+
+    // const handleFile = (e) => {
+    //     let file = e.target.files[0]
+    //     this.setState({ file: file })
+    //     // let files = e.target.files
+    //     // let reader = new FileReader()
+    //     // reader.readAsDataURL(files[0])
+    //     // reader.onload = (e) => {
+    //     //     // console.warn("pdf sata", e.target.result)
+    //     //     const url = "http://localhost:3000/"
+    //     //     const formData = { file: e.target.result }
+    //     //     return post(url, formData)
+    //     //         .then(response => console.warn("result", response))
+    // }
+
+    // const handleUpload = (e) => {
+    //     // console.log(this.state, "The State----$$$$")
+    //     let file = this.state.file
+    //     let formdata = new FormData()
+
+    //     formdata.append('pdf', file)
+    //     formdata.append('name', "Aashwin Vats")
+
+
+    //     axios({
+    //         url: 'http://localhost:3000/',
+    //         method: 'POST',
+    //         // headers:{
+    //         //     authorization: ''
+    //         // }
+    //         data: formdata
+    //     }).then((res) => {
+
+
+    //     }), (err) => {
+
+    //     }
+    // }
+
+
+
+
+    // console.warn("datafiles", files)
+
 
     const [isInitialDataLoaded, setInitialDataLoaded] = useState(false)
 
@@ -48,6 +97,8 @@ const ProjectCreateform = (props) => {
     const submitform = () => {
         props.handleFormSubmit({ ...form })
     }
+
+
 
     return (
         <form>
@@ -145,6 +196,28 @@ const ProjectCreateform = (props) => {
                         <option>React.js</option>
                     </select>
                 </div>
+
+                {/* <div className="form-group">
+                    <label for="prototype">Add prototypes:</label>
+                    <br />
+                    <input
+                        onChange={(e) => handleFile(e)}
+                        name="file"
+                        value={form.cover}
+                        type="file"
+                        // className="form-control"
+                        id="cover"
+                        placeholder="Choose file" /><span className="align-div">
+                        <button
+                            type="button"
+                            onClick={(e) => handleUpload(e)}
+                            className="btn btn-secondary btn-sm">Upload
+
+                        </button>
+                    </span>
+                </div> */}
+
+
                 <button
                     onClick={submitform}
                     type="button"
@@ -155,6 +228,11 @@ const ProjectCreateform = (props) => {
                 <style jsx>{`
         .info-label {
             font-size: 10px;
+        }
+        .align-div{
+            float: right;
+
+
         }
         `}
                 </style>

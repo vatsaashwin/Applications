@@ -1,10 +1,10 @@
 
 import auth0 from 'auth0-js';
 import Cookies from 'js-cookie'
+import jwt from 'jsonwebtoken'
 // import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 
 class Auth0 {
-
     constructor() {
         this.auth0 = new auth0.WebAuth({
             domain: 'dev-ygcohjqk.auth0.com',
@@ -15,7 +15,7 @@ class Auth0 {
         })
         this.login = this.login.bind(this)
         this.logout = this.logout.bind(this)
-        this.isAuthenticated = this.isAuthenticated.bind(this)
+        // this.isAuthenticated = this.isAuthenticated.bind(this)
         this.handleAuthentication = this.handleAuthentication.bind(this)
     }
 
@@ -51,43 +51,47 @@ class Auth0 {
             clientID: 'lPRGHLCKHpe2045jEdqoShfCl8X50Kup'
 
         })
+
     }
 
     login() {
         this.auth0.authorize()
     }
 
-    isAuthenticated() {
-        const expiresAt = Cookies.getJSON('expiresAt')
-        console.log(new Date().getTime() < expiresAt)
-        return new Date().getTime() < expiresAt
+    // isAuthenticated() {
+    //     const expiresAt = Cookies.getJSON('expiresAt')
+    //     console.log("inside isAuthenticated: ", new Date().getTime() < expiresAt)
+    //     return new Date().getTime() < expiresAt
+    // }
+
+    verifyToken(token) {
+        if (token) {
+            const decodedToken = jwt.decode(token)
+            const expiresAt = decodedToken.exp * 1000
+            return (decodedToken && new Date().getTime() < expiresAt) ? decodedToken : undefined
+        }
+        return undefined
     }
 
     clientAuth() {
-        return this.isAuthenticated()
+        // return this.isAuthenticated()
+        const token = Cookies.getJSON('jwt')
+        const verifiedToken = this.verifyToken(token)
+        return token
     }
 
     serverAuth(req) {
         if (req.headers.cookie) {
-            // const expiresAtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('expiresAt='))
-            // if (!expiresAtCookie) { return undefined }
-            // const expiresAt = expiresAtCookie.split('=')[1]
-            // return new Date().getTime() < expiresAt
-            const cookies = req.headers.cookie;
-            const splitedCookies = cookies.split(';');
-            const expirestAtCookie = splitedCookies.find(c => c.trim().startsWith('expiresAt='));
-            if (!expirestAtCookie) { return undefined };
-            const expiresAtArray = expirestAtCookie.split('=');
-            const expiresAt = expiresAtArray[1];
+            const tokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='))
+            if (!tokenCookie) { return undefined }
+            const token = tokenCookie.split('=')[1]
+            const verifiedToken = this.verifyToken(token)
 
-            return new Date().getTime() < expiresAt;
+            return verifiedToken
         }
+        return undefined
     }
 }
-
-
-
-
 
 
 const auth0Client = new Auth0()

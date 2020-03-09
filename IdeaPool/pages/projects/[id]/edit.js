@@ -21,7 +21,7 @@ class EditProject extends React.Component {
     render() {
         const { project } = this.props
         return (
-            <div>
+            <div {...this.props.auth}>
                 <div className="container">
                     <h1 className="h1-padding">Edit the Project</h1>
                     <ProjectCreateForm

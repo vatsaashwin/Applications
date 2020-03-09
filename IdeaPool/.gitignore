@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/services/auth0.js
 
 # testing
 /coverage

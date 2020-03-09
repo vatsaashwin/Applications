@@ -1,7 +1,7 @@
-
 import App from 'next/app'
 import Head from 'next/head'
 import Navbar from '../components/navbar'
+import Landing from '../components/landing'
 import Footer from '../components/footer'
 import '../styles/index.scss'
 import auth0 from '../services/auth0'
@@ -10,21 +10,26 @@ import auth0 from '../services/auth0'
 export default class ProjectApp extends App {
     // TODO: execute here getInitialProps and pass this data to your page
 
-    static async getInitialProps(ctx) {
-        // const req = JSON.stringify(ctx.req)
-        const isAuthenticated = process.browser ? auth0.clientAuth() : auth0.serverAuth(ctx.req)
-        console.log(isAuthenticated)
-        // Executing getInitialProps of page you are navigated to
-        const appProps = await App.getInitialProps(ctx)
-        return { ...appProps }
+    static async getInitialProps({ ctx, Component }) {
+        let pageProps = {};
+        const user = process.browser ? auth0.clientAuth() : auth0.serverAuth(ctx.req)
+        // const user = typeof window === 'undefined' ? await auth0.serverAuth(ctx.req) : await auth0.clientAuth();
+        console.log("this is what I want to know", user)
+        if (Component.getInitialProps) {
+            pageProps = await Component.getInitialProps(ctx)
+        }
+
+        const auth = { user, isAuthenticated: !!user }
+
+        return { pageProps, auth }
     }
 
     render() {
 
         // Component hold page you are navigating to
-        const { Component, pageProps } = this.props
+        const { Component, pageProps, auth, isAuthenticated } = this.props
         return (
-            // <div>Hi</div>
+            // { !auth && <div>Hi</div>}
 
             <div>
                 <Head>
@@ -35,9 +40,10 @@ export default class ProjectApp extends App {
                     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossOrigin="anonymous"></script>
                 </Head>
 
-                <Navbar />
-                <div className="base-page">
-                    <Component {...pageProps} />
+                <Navbar isAuthenticated={auth} />
+                <div className="base-page" isAuthenticated={auth}>
+
+                    <Component {...pageProps} auth={auth} />
                 </div>
                 <Footer />
 
@@ -52,6 +58,3 @@ export default class ProjectApp extends App {
         )
     }
 }
-
-
-// export default ProjectApp

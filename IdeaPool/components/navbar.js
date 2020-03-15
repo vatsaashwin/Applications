@@ -17,7 +17,8 @@ const Logout = () => {
 // const Navbar = (props) => {
 export default class Navbar extends React.Component {
     render() {
-        const { isAuthenticated } = this.props
+        // const { isAuthenticated, user } = this.props
+        const { auth: { isAuthenticated } } = this.props
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -28,23 +29,11 @@ export default class Navbar extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
-                            {/* {isAuthenticated && <li className="nav-item active">
+                            {isAuthenticated && <li className="nav-item active">
                                 <Link href="/">
                                     <a className="nav-link" >Home <span className="sr-only">(current)</span></a>
                                 </Link>
                             </li>}
-                            {isAuthenticated && <li className="nav-item">
-                                <Link href="/About"><a className="nav-link" >About</a></Link>
-                            </li>}
-
-                            {isAuthenticated && <li className="nav-item">
-                                <Link href="/Contact"><a className="nav-link" >Contact</a></Link>
-                            </li>} */}
-                            <li className="nav-item active">
-                                <Link href="/">
-                                    <a className="nav-link" >Home <span className="sr-only">(current)</span></a>
-                                </Link>
-                            </li>
                             <li className="nav-item">
                                 <Link href="/About"><a className="nav-link" >About</a></Link>
                             </li>

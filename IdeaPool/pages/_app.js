@@ -12,7 +12,7 @@ export default class ProjectApp extends App {
 
     static async getInitialProps({ ctx, Component }) {
         let pageProps = {};
-        const user = process.browser ? auth0.clientAuth() : auth0.serverAuth(ctx.req)
+        const user = process.browser ? await auth0.clientAuth() : await auth0.serverAuth(ctx.req)
         // const user = typeof window === 'undefined' ? await auth0.serverAuth(ctx.req) : await auth0.clientAuth();
         console.log("this is what I want to know", user)
         if (Component.getInitialProps) {
@@ -20,14 +20,15 @@ export default class ProjectApp extends App {
         }
 
         const auth = { user, isAuthenticated: !!user }
+        // console.log("user name", user.name)
 
-        return { pageProps, auth }
+        return { pageProps, auth, user }
     }
 
     render() {
 
         // Component hold page you are navigating to
-        const { Component, pageProps, auth, isAuthenticated } = this.props
+        const { Component, pageProps, auth, user } = this.props
         return (
             // { !auth && <div>Hi</div>}
 
@@ -40,12 +41,15 @@ export default class ProjectApp extends App {
                     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossOrigin="anonymous"></script>
                 </Head>
 
-                <Navbar isAuthenticated={auth} />
-                <div className="base-page" isAuthenticated={auth}>
+                <Navbar auth={auth} user={user} />
 
-                    <Component {...pageProps} auth={auth} />
+
+                <div className="base-page" >
+
+                    <Component {...pageProps} auth={auth} user={user} />
                 </div>
                 <Footer />
+
 
 
                 <style jsx>{`

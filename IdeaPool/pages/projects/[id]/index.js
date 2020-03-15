@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router'
 import { getProjectById, deleteProject } from '../../../actions'
 import Link from 'next/link'
+import withAuth from '../components/hoc/withAuth'
 
 
 const Project = (props) => {
@@ -58,4 +59,4 @@ Project.getInitialProps = async ({ query }) => {
     return { project }
 }
 
-export default Project
+export default withAuth(Project)

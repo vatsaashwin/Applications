@@ -1,5 +1,9 @@
 
 import axios from 'axios'
+import Cookies from 'js-cookie'
+// import { getCookieFromReq } from '../helpers/utils'
+import { getCookieFromReq } from '../helpers/utils';
+
 
 const PROJ_DATA = []
 
@@ -21,6 +25,21 @@ const CATEGORY_DATA = [
     { id: '10', name: 'C#/.Net' },
     { id: '11', name: 'Python' }
 ]
+
+const setAuthHeader = (req) => {
+    const token = req ? getCookieFromReq(req, 'jwt') : Cookies.getJSON('jwt')
+
+    if (token) {
+        return { headers: { 'authorization': `Bearer ${token}` } }
+    }
+
+    return undefined;
+}
+
+export const getSecretData = async (req) => {
+    const url = 'http://localhost:3000/api/v1/secret'
+    return await axios.get(url, setAuthHeader(req)).then((response) => response.data)
+}
 
 export const getCategories = () => {
     return new Promise((resolve, reject) => {
@@ -55,4 +74,6 @@ export const updateProject = (project) => {
 export const deleteProject = (id) => {
     return axios.delete(`${BASE_URL}/api/v1/projects/${id}`).then(res => res.data)
 }
+
+
 

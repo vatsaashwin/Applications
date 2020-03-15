@@ -1,4 +1,5 @@
 import React from 'react'
+import withAuth from '../components/hoc/withAuth'
 
 class Posts extends React.Component {
 
@@ -11,4 +12,4 @@ class Posts extends React.Component {
     }
 }
 
-export default Posts
+export default withAuth(Posts)

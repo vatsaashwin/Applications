@@ -3,6 +3,8 @@
 const next = require('next')
 const express = require('express');
 const bodyParser = require('body-parser')
+const authService = require('./services/auth')
+const mongoose = require('mongoose')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -12,14 +14,39 @@ const filePath = './data.json'
 const fs = require('fs')
 const path = require('path')
 const projectsData = require(filePath)
+const config = require('./config/')
+
+const secretData = [
+    {
+        title: "SecretData1",
+        description: "Plans to buld spacecraft"
+    },
+    {
+        title: "SecretData2",
+        description: "Plans to buld spacecraft 2"
+    },
+
+]
+
+mongoose.connect(config.DB_URI, { useNewUrlParser: true })
+    .then(() => console.log('Database Connected')).catch(err => console.error(err))
 
 app.prepare().then(() => {
 
     const server = express();
-    server.use(bodyParser.json())
+    // server.use(bodyParser.json())
+    server.use(function (err, req, res, next) {
+        if (err.name === 'UnauthorizedError') {
+            res.status(401).send({ title: 'Unauthorized', detail: 'Unauthorized Access!' });
+        }
+    });
 
     server.get('/api/v1/projects', (req, res) => {
         return res.json(projectsData)
+    })
+
+    server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
+        return res.json(secretData)
     })
 
     server.get('/api/v1/projects/:id', (req, res) => {
@@ -83,17 +110,6 @@ app.prepare().then(() => {
         })
     })
 
-
-
-    // server.get('/faq', (req, res) => {
-    //   res.send(`
-    //     <html>
-    //       <head></head>
-    //       <body><h1>Hello World!</h1>
-    //       </body>
-    //     </html>
-    //   `)
-    // })
 
     // we are handling all of the request comming to our server
     server.get('*', (req, res) => {

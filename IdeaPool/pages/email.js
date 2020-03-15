@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Form, FormGroup, Input, Label, Button } from 'reactstrap'
 import axios from 'axios'
+import withAuth from '../components/hoc/withAuth'
+
 
 class Email extends Component {
 
@@ -60,4 +62,4 @@ class Email extends Component {
 
 }
 
-export default Email
+export default withAuth(Email)

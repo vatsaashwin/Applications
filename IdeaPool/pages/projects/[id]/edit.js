@@ -3,6 +3,8 @@ import React from 'react'
 import ProjectCreateForm from '../../../components/projectCreateForm'
 import { getProjectById, updateProject } from '../../../actions'
 import Router from 'next/router'
+import withAuth from '../components/hoc/withAuth'
+
 
 class EditProject extends React.Component {
 
@@ -38,4 +40,4 @@ class EditProject extends React.Component {
     }
 }
 
-export default EditProject
+export default withAuth(EditProject)

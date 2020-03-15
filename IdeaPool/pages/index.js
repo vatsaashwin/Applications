@@ -3,6 +3,7 @@ import Sidemenu from '../components/sidemenu'
 import Carousel from '../components/carousel'
 import Projectlist from '../components/projectlist'
 import { getProjects, getCategories } from '../actions'
+import Landing from '../components/landing'
 
 
 const Home = (props) => {
@@ -27,47 +28,64 @@ const Home = (props) => {
       return project.tech && project.tech.includes(filter)
     })
   }
+  if (isAuthenticated) {
+    return (
 
-  return (
-    < div {...props.auth}>
+      < div {...props.auth}>
 
-      <div className="homepage" >
-        <div className="container">
-
-          <div className="row">
+        <div className="homepage" >
 
 
-            <div className="col-lg-3">
-              <Sidemenu
-                changeCategory={changeCategory}
-                activeCategory={filter}
-                categories={categories}
-                appName={"Tech Stack"}
-
-              />
-            </div>
-
-            <div className="col-lg-9">
-
-              <Carousel images={images} />
-              <h1>
-                {isAuthenticated && <span>{user.name}</span>}
-              </h1>
-              <h2>Displaying {filter} Projects</h2>
+          <div className="container">
 
 
-              <div className="row">
-                <Projectlist
-                  projects={filterProjects(projects) || []}
+            <div className="row">
+
+
+              <div className="col-lg-3">
+                <Sidemenu
+                  changeCategory={changeCategory}
+                  activeCategory={filter}
+                  categories={categories}
+                  appName={"Tech Stack"}
+
                 />
               </div>
 
+              <div className="col-lg-9">
+                {user.name && <p className="text-right">Welcome, {user.name}</p>}
+                <Carousel images={images} />
+
+                <h2>Displaying {filter} Projects</h2>
+
+
+                <div className="row">
+                  <Projectlist
+                    projects={filterProjects(projects) || []}
+                  />
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div >
-  )
+      </div >
+    )
+  }
+  else {
+    {
+      return (
+
+        < div {...props.auth}>
+
+          <div className="homepage" >
+            <Landing />
+          </div>
+        </div>
+
+      )
+    }
+  }
 }
 
 Home.getInitialProps = async () => {

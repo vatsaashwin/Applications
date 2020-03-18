@@ -4,57 +4,14 @@ import axios, { post } from 'axios'
 
 const ProjectCreateform = (props) => {
 
-    // const state = {
-    //     file: null
-    // }
-
-    // const handleFile = (e) => {
-    //     let file = e.target.files[0]
-    //     this.setState({ file: file })
-    //     // let files = e.target.files
-    //     // let reader = new FileReader()
-    //     // reader.readAsDataURL(files[0])
-    //     // reader.onload = (e) => {
-    //     //     // console.warn("pdf sata", e.target.result)
-    //     //     const url = "http://localhost:3000/"
-    //     //     const formData = { file: e.target.result }
-    //     //     return post(url, formData)
-    //     //         .then(response => console.warn("result", response))
-    // }
-
-    // const handleUpload = (e) => {
-    //     // console.log(this.state, "The State----$$$$")
-    //     let file = this.state.file
-    //     let formdata = new FormData()
-
-    //     formdata.append('pdf', file)
-    //     formdata.append('name', "Aashwin Vats")
-
-
-    //     axios({
-    //         url: 'http://localhost:3000/',
-    //         method: 'POST',
-    //         // headers:{
-    //         //     authorization: ''
-    //         // }
-    //         data: formdata
-    //     }).then((res) => {
-
-
-    //     }), (err) => {
-
-    //     }
-    // }
-
-
-
-
-    // console.warn("datafiles", files)
-
-
     const [isInitialDataLoaded, setInitialDataLoaded] = useState(false)
 
+    const { userDeets } = props
+
+    // console.log("\n\n\nsgsdfgsdg", userDeets)
+
     const defaultData = {
+        userID: userDeets.name,
         name: '',
         description: '',
         longDesc: '',
@@ -63,6 +20,9 @@ const ProjectCreateform = (props) => {
         longDesc: ''
     }
     const formData = props.initialData ? { ...props.initialData } : defaultData
+
+    // console.log("\n\n\n formData", formData)
+
 
     const [form, setform] = useState(formData)
 
@@ -99,12 +59,16 @@ const ProjectCreateform = (props) => {
     }
 
 
-
     return (
+
         <form>
             <div>
                 <div className="form-group">
-                    <label for="name">Name</label>
+
+                    <label for="name">Name
+                    {/* {user.name} */}
+                    </label>
+
                     <input
                         onChange={handleChange}
                         value={form.name}
@@ -197,33 +161,22 @@ const ProjectCreateform = (props) => {
                     </select>
                 </div>
 
-                {/* <div className="form-group">
-                    <label for="prototype">Add prototypes:</label>
-                    <br />
-                    <input
-                        onChange={(e) => handleFile(e)}
-                        name="file"
-                        value={form.cover}
-                        type="file"
-                        // className="form-control"
-                        id="cover"
-                        placeholder="Choose file" /><span className="align-div">
-                        <button
-                            type="button"
-                            onClick={(e) => handleUpload(e)}
-                            className="btn btn-secondary btn-sm">Upload
-
-                        </button>
-                    </span>
-                </div> */}
-
-
                 <button
                     onClick={submitform}
                     type="button"
                     className="btn btn-primary">
                     {props.submitButton || 'Create'}
                 </button>
+                {/* <div className="col-lg-9">
+                    
+                </div> */}
+                <div className="form-group">
+                    <blockquote class="blockquote">
+                        {/* <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> */}
+                        {form.userID && <footer class="blockquote-footer text-info">By <cite title="Source Title">{form.userID}</cite></footer>}
+                        {/* {userDeets.name && <p className="text-right">Created By {userDeets.name}</p>} */}
+                    </blockquote>
+                </div>
 
                 <style jsx>{`
         .info-label {
@@ -231,14 +184,35 @@ const ProjectCreateform = (props) => {
         }
         .align-div{
             float: right;
-
-
         }
         `}
                 </style>
             </div>
-        </form>
+        </form >
     )
 }
+
+// class User extends React.Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             user: '',
+//         }
+//         // const { user } = this.props.auth
+
+//     }
+
+//     render() {
+//         // const { user } = this.props.auth
+//         console.log("fdsfsdfds", props)
+
+//         return (
+//             <div>
+//                 <p>vjhvhjvjh</p>
+//                 {/* {this.user.name && <p className="text-right">Welcome, {this.user.name}</p>} */}
+//             </div>
+//         )
+//     }
+// }
 
 export default ProjectCreateform

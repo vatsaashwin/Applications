@@ -14,7 +14,7 @@ export default class ProjectApp extends App {
         let pageProps = {};
         const user = process.browser ? await auth0.clientAuth() : await auth0.serverAuth(ctx.req)
         // const user = typeof window === 'undefined' ? await auth0.serverAuth(ctx.req) : await auth0.clientAuth();
-        console.log("this is what I want to know", user)
+        // console.log("this is what I want to know", user)
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }

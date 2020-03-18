@@ -2,13 +2,12 @@
 import { useRouter } from 'next/router'
 import { getProjectById, deleteProject } from '../../../actions'
 import Link from 'next/link'
-import withAuth from '../components/hoc/withAuth'
-
 
 const Project = (props) => {
     const router = useRouter()
     const { id } = router.query
     const { project } = props
+    // const {}
 
     const handleDeleteProject = (id) => {
         deleteProject(id).then(() => {
@@ -17,24 +16,52 @@ const Project = (props) => {
         })
     }
 
+    // function Edit(props) {
+    //     return
+    //     <div><Link href="/projects/[id]/edit" as={`/projects/${id}/edit`}>
+    //         <button
+    //             className="btn btn-warning btn-lg mr-4 px-5"
+    //             role="button">Edit</button>
+    //     </Link>
+    //         <button onClick={() => handleDeleteProject(id)} className="btn btn-danger btn-lg mr-4 px-5" href="#" role="button">Delete</button></div>
+    // }
+
+    // function Hide(props) {
+    //     return <h1>HIDING</h1>;
+    // }
+
+    // function CheckUser(props) {
+    //     const isCurrentUser = props.user;
+    //     console.log("\n\n\n\n", project.userID)
+    //     console.log("\n\n\n\n", isCurrentUser)
+
+    //     if (isCurrentUser === project.userID) {
+    //         return <Edit />;
+    //     }
+    //     return <Hide />;
+    // }
+
     return (
-        <div className="container" {...props.auth}>
-            <div className="jumbotron">
-                <h1 className="display-4">{project.name}</h1>
+        <div className="container" {...props.auth} {...props.user}>
+            <div className="jumbotron p-4">
+                <h1 className="display-2">{project.name}</h1>
                 <p className="lead">{project.description}</p>
+                <p><b>Required Skills: </b>{project.tech}</p>
+                <p> Request to Collab at: {project.email ? project.email : 'Email not provided'} </p>
                 <hr className="my-4" />
-                <p>{project.tech}</p>
+
                 <Link href="/projects/[id]/edit" as={`/projects/${id}/edit`}>
                     <button
-                        className="btn btn-warning btn-lg mr-1"
+                        className="btn btn-warning btn-lg mr-4 px-5"
                         role="button">Edit</button>
                 </Link>
-                <button onClick={() => handleDeleteProject(id)} className="btn btn-danger btn-lg mr-1" href="#" role="button">Delete</button>
+                <button onClick={() => handleDeleteProject(id)} className="btn btn-danger btn-lg mr-4 px-5" href="#" role="button">Delete</button>
+                {/* <CheckUser isCurrentUser={false} /> */}
 
-                <p className="info-p">Request to Collab at: {project.email ? project.email : 'Email not provided'} </p>
 
             </div>
             <p className="desc-text">{project.longDesc}</p>
+            <p className="text-secondary text-right">{project.userID}</p>
             <style jsx>{`
                 .desc-text {
                 font-size: 21px;
@@ -59,4 +86,4 @@ Project.getInitialProps = async ({ query }) => {
     return { project }
 }
 
-export default withAuth(Project)
+export default Project

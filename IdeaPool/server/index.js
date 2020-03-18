@@ -1,19 +1,13 @@
-
-
 const next = require('next')
 const express = require('express');
 const bodyParser = require('body-parser')
 const authService = require('./services/auth')
+// const auth0 = require('../services/auth0')
 const mongoose = require('mongoose')
-
+const Project = require('./models/project')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-
-const filePath = './data.json'
-const fs = require('fs')
-const path = require('path')
-const projectsData = require(filePath)
 const config = require('./config/')
 
 const secretData = [
@@ -34,88 +28,101 @@ mongoose.connect(config.DB_URI, { useNewUrlParser: true })
 app.prepare().then(() => {
 
     const server = express();
-    // server.use(bodyParser.json())
+    server.use(bodyParser.json())
+
     server.use(function (err, req, res, next) {
         if (err.name === 'UnauthorizedError') {
             res.status(401).send({ title: 'Unauthorized', detail: 'Unauthorized Access!' });
         }
+
+        // console.log("\n\n\n", res.userID)
+
+
     });
 
-    server.get('/api/v1/projects', (req, res) => {
-        return res.json(projectsData)
-    })
-
+    // server.use('/api/v1/index', user)
     server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
         return res.json(secretData)
     })
 
+
+    // TODO get all from other users
+    server.get('/api/v1/projects', (req, res) => {
+        // return res.json(projectsData)
+
+        Project.find()
+            .then((projects) => {
+                res.json(projects)
+            })
+            .catch((err) => { res.status(400).send(err) })
+    })
+
+
+
     server.get('/api/v1/projects/:id', (req, res) => {
         const { id } = req.params
 
-        const project = projectsData.find(m => m.id === id)
-        return res.json(project)
+        Project.find({ id: id })
+            .then((project) => {
+                if (!project) {
+                    res.sendStatus(404)
+                }
+
+                res.json(project[0])
+            })
+            .catch((err) => {
+                res.status(400).send(err)
+            })
+        // }
+
     })
 
     server.post('/api/v1/projects', (req, res) => {
         // add ID
-        const project = req.body
-        projectsData.push(project)
+        // const project = req.body
+        // console.log("ddsfadfasd", req.body)
+        const proj = new Project(req.body)
+        proj.save()
+            .then((doc) => {
+                res.send(doc)
+            })
+            .catch((err) => { res.status(400).send(err) })
 
-        const pathToFile = path.join(__dirname, filePath)
-        const stringifiedData = JSON.stringify(projectsData, null, 2)
-
-        fs.writeFile(pathToFile, stringifiedData, (err) => {
-            if (err) {
-                return res.status(422).send(err)
-            }
-            return res.json('Project has been successfully added.')
-        })
     })
+
 
     server.patch('/api/v1/projects/:id', (req, res) => {
 
         const { id } = req.params
-        const project = req.body
-        const projectIndex = projectsData.findIndex(m => m.id === id)
+        const proj = new Project(req.body)
+        Project.findOneAndUpdate({ id: id }, { $set: proj }, { new: true })
+            .then((doc) => {
+                res.send(doc)
+            })
+            .catch((err) => { res.status(400).send(err) })
 
-        projectsData[projectIndex] = project
 
-        const pathToFile = path.join(__dirname, filePath)
-        const stringifiedData = JSON.stringify(projectsData, null, 2)
-
-        fs.writeFile(pathToFile, stringifiedData, (err) => {
-            if (err) {
-                return res.status(422).send(err)
-            }
-            return res.json('Project has been successfully updated.')
-        })
     })
-
 
 
     server.delete('/api/v1/projects/:id', (req, res) => {
         const { id } = req.params
 
-        const projectIndex = projectsData.findIndex(m => m.id === id)
-        projectsData.splice(projectIndex, 1)
 
-        const pathToFile = path.join(__dirname, filePath)
-        const stringifiedData = JSON.stringify(projectsData, null, 2)
-
-        fs.writeFile(pathToFile, stringifiedData, (err) => {
-            if (err) {
-                return res.status(422).send(err)
-            }
-            return res.json('Project has been successfully added.')
-        })
+        Project.remove({ id: id })
+            .then((doc) => {
+                res.send(doc)
+            })
+            .catch((err) => { res.status(400).send(err) })
     })
-
 
     // we are handling all of the request comming to our server
     server.get('*', (req, res) => {
         // next.js is handling requests and providing pages where we are navigating to
         return handle(req, res)
     })
+
+
 
     const PORT = process.env.PORT || 3000;
 

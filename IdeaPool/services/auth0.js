@@ -11,11 +11,6 @@ import config from '../server/config'
 class Auth0 {
     constructor() {
         this.auth0 = new auth0.WebAuth({
-            // domain: 'dev-ygcohjqk.auth0.com',
-            // clientID: 'lPRGHLCKHpe2045jEdqoShfCl8X50Kup',
-            // redirectUri: 'http://localhost:3000/callback',
-            // responseType: 'token id_token',
-            // scope: 'openid profile'
             domain: config.domain,
             clientID: config.clientID,
             redirectUri: config.redirectUri,

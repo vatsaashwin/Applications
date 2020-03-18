@@ -34,6 +34,7 @@ export default class Navbar extends React.Component {
                                     <a className="nav-link" >Home <span className="sr-only">(current)</span></a>
                                 </Link>
                             </li>}
+
                             <li className="nav-item">
                                 <Link href="/About"><a className="nav-link" >About</a></Link>
                             </li>
@@ -55,8 +56,8 @@ export default class Navbar extends React.Component {
 
                         </ul>
                     </div>
-                </div>
-            </nav>
+                </div >
+            </nav >
         )
     }
 }

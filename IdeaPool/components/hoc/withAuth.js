@@ -15,7 +15,7 @@ export default function (Component) {
                     <Component {...this.props} />
                 )
             } else {
-                return (< div className="container" {...this.props.auth}>
+                return (< div className="container" {...this.props.auth} {...this.props.user}>
                     <div className="alert alert-danger" role="alert">You are not authenticated. Please login to access this page.</div>
                 </div >)
 

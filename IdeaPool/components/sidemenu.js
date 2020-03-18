@@ -5,7 +5,8 @@ import ProjectCreateForm from './projectCreateForm'
 import { createProject } from '../actions'
 
 const Sidemenu = (props) => {
-    const { categories } = props
+    const { categories, userDeets } = props
+    // console.log("\n\n\nuserdeets\n\n", userDeets)
     const router = useRouter()
     let modal = null
 
@@ -17,10 +18,10 @@ const Sidemenu = (props) => {
     }
 
     return (
-        <div className='sidemenu-padding'>
+        <div className='sidemenu-padding' >
 
-            <Modal ref={elem => modal = elem} hasSubmit={false}>
-                <ProjectCreateForm handleFormSubmit={handleCreateProject} />
+            <Modal ref={elem => modal = elem} hasSubmit={false} >
+                <ProjectCreateForm handleFormSubmit={handleCreateProject} userDeets={userDeets} ></ProjectCreateForm>
             </Modal>
             {/* <button onClick={props.clickHandler}>Click Me!</button> */}
             <h1 className="my-4">{props.appName}</h1>

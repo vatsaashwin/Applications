@@ -4,7 +4,6 @@ import Cookies from 'js-cookie'
 // import { getCookieFromReq } from '../helpers/utils'
 import { getCookieFromReq } from '../helpers/utils';
 
-
 const PROJ_DATA = []
 
 const BASE_URL = "http://localhost:3000"
@@ -18,9 +17,7 @@ const CATEGORY_DATA = [
     { id: '5', name: 'MySQL' },
     { id: '6', name: 'MongoDB' },
     { id: '7', name: 'PHP' },
-    {
-        id: '8', name: 'Ruby on Rails'
-    },
+    { id: '8', name: 'Ruby on Rails' },
     { id: '9', name: 'Java' },
     { id: '10', name: 'C#/.Net' },
     { id: '11', name: 'Python' }
@@ -40,6 +37,8 @@ export const getSecretData = async (req) => {
     const url = 'http://localhost:3000/api/v1/secret'
     return await axios.get(url, setAuthHeader(req)).then((response) => response.data)
 }
+
+
 
 export const getCategories = () => {
     return new Promise((resolve, reject) => {

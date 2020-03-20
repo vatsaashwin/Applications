@@ -4,6 +4,7 @@ import Carousel from '../components/carousel'
 import Projectlist from '../components/projectlist'
 import { getProjects, getCategories } from '../actions'
 import Landing from '../components/landing'
+import Email from './projects/[id]/email'
 
 const Home = (props) => {
 
@@ -16,12 +17,17 @@ const Home = (props) => {
     setFilter(category)
   }
 
+  // const { user } = props.user
+
   const filterProjects = (projects) => {
     if (filter === 'All') {
-      return projects
+      // return projects
+      return projects.filter((project) => {
+        return projects && project.userID != user.name
+      })
     }
     return projects.filter((project) => {
-      return project.tech && project.tech.includes(filter)
+      return project.tech && project.tech.includes(filter) && project.userID != user.name
     })
   }
 
@@ -51,8 +57,10 @@ const Home = (props) => {
               </div>
 
               <div className="col-lg-9">
-                {user.name && <p className="text-right">Welcome, {user.name}</p>}
-                {/* <Carousel images={images} /> */}
+                {/* {user.name && <p className="float-right">Welcome, {user.name}</p>} */}
+
+                {/* <Email auth={auth} user={user} /> */}
+                <Carousel images={images} />
 
                 <h3 className="py-3">{filter} Projects:</h3>
 

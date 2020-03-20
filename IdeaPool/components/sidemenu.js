@@ -40,6 +40,9 @@ const Sidemenu = (props) => {
             .sidemenu-padding {
                 padding: 20px;
             }
+            .list-group-item.active {
+                background-color: grey;
+                border-color: grey; }
             `}
             </style>
         </div >

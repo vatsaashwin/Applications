@@ -14,10 +14,11 @@ const ProjectCreateform = (props) => {
         userID: userDeets.name,
         name: '',
         description: '',
+        spots: 0,
         longDesc: '',
         image: '',
         email: '',
-        longDesc: ''
+        cover: ''
     }
     const formData = props.initialData ? { ...props.initialData } : defaultData
 
@@ -58,6 +59,10 @@ const ProjectCreateform = (props) => {
         props.handleFormSubmit({ ...form })
     }
 
+    const handleFile = (e) => {
+
+    }
+
 
     return (
 
@@ -90,6 +95,20 @@ const ProjectCreateform = (props) => {
                         id="description"
                         placeholder="A social media website..." />
                 </div>
+                <div className="form-group">
+
+                    <label for="spots">Spots left to join:</label>
+
+                    <input
+                        onChange={handleChange}
+                        value={form.spots}
+                        name="spots"
+                        type="number"
+                        className="form-control"
+                        id="spots"
+                        aria-describedby="Team Members Required"
+                        placeholder="1, 2, 3..." />
+                </div>
 
                 <div className="form-group">
                     <label for="email">E-mail</label>
@@ -119,7 +138,7 @@ const ProjectCreateform = (props) => {
 
                 </div>
                 <div className="form-group">
-                    <label for="cover">Caraousel cover image URL (<a href="https://unsplash.com/" target="_blank">Look up</a>)</label>
+                    <label for="cover">Carousel cover image URL (<a href="https://unsplash.com/" target="_blank">Look up</a>)</label>
                     <input
                         onChange={handleChange}
                         name="cover"
@@ -140,6 +159,18 @@ const ProjectCreateform = (props) => {
                         id="longDesc"
                         rows="3"></textarea>
                 </div>
+                {/* <div className="form-group">
+                    <label for="prototype">Additional details/prototypes:</label>
+
+                    <input
+                        onChange={(e) => handleFile(e)}
+                        name="file"
+                        value={form.cover}
+                        type="file"
+                        className="form-control"
+                        id="file"
+                        placeholder="Choose file" />
+                </div> */}
                 <div className="form-group">
                     <label for="tech">Technical Stack</label>
                     <select

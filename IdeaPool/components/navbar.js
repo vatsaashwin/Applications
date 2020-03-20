@@ -34,6 +34,11 @@ export default class Navbar extends React.Component {
                                     <a className="nav-link" >Home <span className="sr-only">(current)</span></a>
                                 </Link>
                             </li>}
+                            {isAuthenticated && <li className="nav-item ">
+                                <Link href="/proposals">
+                                    <a className="nav-link" >My Proposals <span className="sr-only">(current)</span></a>
+                                </Link>
+                            </li>}
 
                             <li className="nav-item">
                                 <Link href="/About"><a className="nav-link" >About</a></Link>

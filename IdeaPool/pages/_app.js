@@ -5,6 +5,7 @@ import Landing from '../components/landing'
 import Footer from '../components/footer'
 import '../styles/index.scss'
 import auth0 from '../services/auth0'
+import Email from './projects/[id]/email'
 
 
 export default class ProjectApp extends App {
@@ -14,7 +15,7 @@ export default class ProjectApp extends App {
         let pageProps = {};
         const user = process.browser ? await auth0.clientAuth() : await auth0.serverAuth(ctx.req)
         // const user = typeof window === 'undefined' ? await auth0.serverAuth(ctx.req) : await auth0.clientAuth();
-        // console.log("this is what I want to know", user)
+        console.log("this is what I want to know", user)
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
@@ -42,6 +43,7 @@ export default class ProjectApp extends App {
                 </Head>
 
                 <Navbar auth={auth} user={user} />
+                {/* <Email auth={auth} user={user} /> */}
 
 
                 <div className="base-page" >

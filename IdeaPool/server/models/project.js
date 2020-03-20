@@ -15,6 +15,12 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: [true, 'description is required']
     },
+
+    spots: {
+        type: Number,
+        required: [true, 'Spots is required']
+    },
+
     longDesc: {
         type: String,
         required: [true, 'longDesc is required']
@@ -50,48 +56,3 @@ const projectSchema = new mongoose.Schema({
 var Project = mongoose.model('proj', projectSchema)
 
 module.exports = Project
-
-// const mongoose = require('mongoose')
-// const {Schema} = mongoose
-
-// const project = new Schema({
-
-//     name: {
-//         type: String,
-//         required: [true, 'name is required']
-//     },
-//     description: {
-//         type: String,
-//         required: [true, 'description is required']
-//     },
-//     longDesc: {
-//         type: String,
-//         required: [true, 'longDesc is required']
-//     },
-
-//     image: {
-//         type: String,
-//         required: [true, 'image is required']
-//     },
-
-//     email: {
-//         type: String,
-//         required: [true, 'email is required']
-//     },
-//     cover: {
-//         type: String,
-//         required: [true, 'cover is required']
-//     },
-//     tech: {
-//         type: String,
-//         required: [true, 'tech is required']
-//     },
-//     id: {
-//         type: String,
-//         required: [true, 'id is required']
-//     }
-
-// })
-
-// // module.exports = project
-// mongoose.model('project', project)

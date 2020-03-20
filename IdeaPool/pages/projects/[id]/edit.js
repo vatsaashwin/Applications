@@ -6,7 +6,6 @@ import Router from 'next/router'
 
 class EditProject extends React.Component {
 
-
     static async getInitialProps({ query }) {
         const project = await getProjectById(query.id)
         return { project }
